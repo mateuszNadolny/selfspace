@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Selfspace
+
+Welcome to **Selfspace**, your personal mental health and well-being sanctuary.
+
+## Overview
+
+In today's fast-paced world, maintaining mental health and clarity has never been more important. Selfspace is a comprehensive fullstack application, designed with care to assist users in nurturing their mind and soul. By harnessing the power of meditation, breathing exercises, focus sessions, serene nature sounds, and reflective journaling, we've curated an experience that seeks to bring tranquility and mindfulness into every user's daily routine.
+
+## Features
+
+1. **Meditation Sessions**: Guided sessions to help you find your center and enhance mindfulness.
+2. **Breathing Exercises**: Regulate your breath and manage stress using scientifically-backed breathing patterns.
+3. **Focus Sessions**: Improve your productivity and concentration with dedicated focus intervals.
+4. **Nature Sounds**: Dive into the tranquility of nature with a selection of calming ambient sounds.
+5. **Mood Journaling**: Reflect on your emotions and understand your mood patterns better.
+6. **General Journaling**: A space for your thoughts, dreams, and memories. A canvas for your mental exploration.
+
+## Technical Stack
+
+* **Frontend**: Built with the latest version of [Next.js 13](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/), providing a seamless and efficient user experience.
+* **Backend**: Powered by [Supabase](https://supabase.io/), an open-source Firebase alternative, ensuring real-time, reliable data storage.
+* **Database**: Managed by [Prisma](https://www.prisma.io/), an open-source database toolkit that guarantees performance and security.
+* **UI Components**: Crafted using [Shadcn](#) (Please replace the placeholder link with the official Shadcn link), enabling a beautiful and responsive design.
+* **Authentication**: Secured with [ClerkAuth](https://clerk.dev/), ensuring user data protection and safe authentication processes.
 
 ## Getting Started
 
-First, run the development server:
+To get Selfspace up and running on your local machine:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/[Your-Username]/selfspace.git
+    cd selfspace
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Setup Environment Variables**: Ensure you have all required environment variables set up, based on the provided `.env.example` file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. **Run the App Locally**
+    ```bash
+    npm run dev
+    ```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+With Selfspace, reclaim your peace and mental clarity. Find your space. 🧘🌌
