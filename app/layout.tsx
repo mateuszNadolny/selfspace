@@ -1,9 +1,20 @@
 // app/layout.tsx
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Alegreya, Alegreya_Sans } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 
-const inter = Inter({ subsets: ['latin'] })
+const alegreya = Alegreya({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-alegreya',
+})
+
+const alegreyaSans = Alegreya_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-alegreya-sans',
+  weight: ['400', '500', '700'],
+})
 
 export const metadata = {
   title: 'Selfspace',
@@ -18,7 +29,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={`${alegreya.variable} ${alegreyaSans.variable}`}>{children}</body>
       </html>
     </ClerkProvider>
   )
