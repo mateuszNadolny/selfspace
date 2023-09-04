@@ -22,6 +22,8 @@ module.exports = {
             },
             colors: {
                 border: 'hsl(var(--border))',
+                startGradient: '#01283d',
+                endGradient: '#001626',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
                 background: 'hsl(var(--background))',

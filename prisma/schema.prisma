@@ -11,8 +11,10 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
+model Post {
   id String @id @default(uuid())
   userId String
-  email String?
+  title String
+  body String
+  createdAt DateTime @default(now())
 }

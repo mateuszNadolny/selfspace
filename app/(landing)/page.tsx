@@ -26,7 +26,7 @@ const LandingPage = () => {
                 </h3>
                 <Button
                     asChild
-                    className="bg-slate-50 text-black hover:text-slate-50 animate-slide-down"
+                    className="bg-slate-50 text-black hover:text-slate-50 animate-slide-down duration-200"
                 >
                     <Link href="/dashboard">Get started</Link>
                 </Button>
