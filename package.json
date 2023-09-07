@@ -11,6 +11,8 @@
   "dependencies": {
     "@clerk/nextjs": "^4.23.2",
     "@prisma/client": "^5.1.1",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@supabase/supabase-js": "^2.33.1",
     "@types/node": "20.4.10",
@@ -22,7 +24,8 @@
     "clsx": "^2.0.0",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
-    "lucide-react": "^0.265.0",
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.263.1",
     "next": "13.4.13",
     "postcss": "8.4.27",
     "react": "18.2.0",
