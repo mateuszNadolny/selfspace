@@ -73,7 +73,7 @@ const MeditationSelector = () => {
             </Select>
             <motion.div
                 whileTap={{ scale: 0.9 }}
-                className="absolute bottom-[5rem] lg:bottom-[10rem] font-alegreya "
+                className="absolute bottom-[9rem] lg:bottom-[10rem] font-alegreya "
             >
                 <Button className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7">
                     Meditate
