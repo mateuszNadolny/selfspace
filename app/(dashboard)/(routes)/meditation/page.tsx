@@ -11,7 +11,7 @@ export default function MediationPage() {
                     width={900}
                     height={900}
                     alt="Leaves"
-                    className="opacity-[0.5%]"
+                    className="opacity-[1%]"
                 />
             </div>
 

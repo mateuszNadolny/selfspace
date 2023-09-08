@@ -1,10 +1,7 @@
-export interface CustomMoodSelectorButtonProps {
+export interface ToolCardProps {
     title: string
     url: string
-    onClick: () => void
-}
-
-export interface MoodData {
-    mood: string
-    date: string
+    href: string
+    primaryColor: string
+    secondaryColor: string
 }
