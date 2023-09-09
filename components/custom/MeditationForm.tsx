@@ -90,7 +90,7 @@ const MeditationForm = () => {
                         control={form.control}
                         name="sound"
                         render={({ field }) => (
-                            <FormItem className="w-[250px] animate-slide-down">
+                            <FormItem className="w-[250px] animate-slide-down ease-in-out">
                                 <FormLabel className="mb-2 text-xl text-slate-500 font-alegreya ">
                                     Sound selection
                                 </FormLabel>
