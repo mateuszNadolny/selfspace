@@ -5,7 +5,7 @@ import MeditationSelector from '@/components/custom/MeditationSelector'
 export default function MediationPage() {
     return (
         <div className="max-w-full relative h-screen">
-            <div className="absolute h-full max-h-screen w-full animate-slide-down flex flex-col items-center justify-center pointer-events-none m-0">
+            <div className="absolute h-full max-h-screen w-full  flex flex-col items-center justify-center pointer-events-none m-0">
                 <Image
                     src="/leaf-meditation.svg"
                     width={900}

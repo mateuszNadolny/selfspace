@@ -9,7 +9,7 @@ export default function DashboardPage() {
     const { user } = useUser()
     return (
         <section className="flex justify-center w-full ">
-            <div className="absolute h-full w-full animate-slide-down flex flex-col items-center justify-center pointer-events-none">
+            <div className="absolute h-full w-full  flex flex-col items-center justify-center pointer-events-none">
                 <Image
                     src="/leaves.svg"
                     width={900}
@@ -18,7 +18,7 @@ export default function DashboardPage() {
                     className="mb-3 opacity-[1%] z-[0]"
                 />
             </div>
-            <div className="max-w-full relative h-screen flex flex-col items-start ">
+            <div className="max-w-full relative h-screen flex flex-col items-start animate-slide-down">
                 <div className="m-0 p-4  pt-10 md:pt-24 mt-8  mb-8">
                     <h1 className="text-4xl md:text-5xl text-slate-50 font-alegreya mb-2 animate-slide-down">
                         {!user ? (
