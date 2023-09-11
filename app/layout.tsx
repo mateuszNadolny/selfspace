@@ -32,7 +32,7 @@ export default function RootLayout({
                 <body
                     className={`${alegreya.variable} ${alegreyaSans.variable}`}
                 >
-                    <main className="w-full max-h-screen bg-gradient-to-b from-startGradient from-1% to-endGradient to-95% ">
+                    <main className="w-full max-w-screen max-h-screen bg-gradient-to-b from-startGradient from-1% to-endGradient to-95%">
                         {children}
                     </main>
                 </body>

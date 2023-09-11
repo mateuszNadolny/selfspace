@@ -33,7 +33,7 @@ const ToolCard = ({ title, url, href, primaryColor }: ToolCardProps) => {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-xl lg:text-2xl">{title}</p>
+                        <p className="text-m lg:text-2xl">{title}</p>
                     </CardContent>
                 </Card>
             </Link>

@@ -50,11 +50,11 @@ const MeditationForm = () => {
     }
 
     return (
-        <div className="w-full ">
+        <div className="w-full relative z-10">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8 flex flex-col items-center "
+                    className="space-y-8 flex flex-col items-center mb-4"
                 >
                     <FormField
                         control={form.control}
@@ -130,10 +130,9 @@ const MeditationForm = () => {
                             </FormItem>
                         )}
                     />
-
                     <motion.div
                         whileTap={{ scale: 0.9 }}
-                        className="absolute bottom-[9rem] lg:bottom-[10rem] font-alegreya "
+                        className="font-alegreya pt-[6rem] animate-slide-down"
                     >
                         <Button
                             type="submit"
