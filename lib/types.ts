@@ -3,5 +3,4 @@ export interface ToolCardProps {
     url: string
     href: string
     primaryColor: string
-    secondaryColor: string
 }

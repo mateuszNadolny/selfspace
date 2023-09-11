@@ -7,13 +7,7 @@ import { ToolCardProps } from '@/lib/types'
 
 import React from 'react'
 
-const ToolCard = ({
-    title,
-    url,
-    href,
-    primaryColor,
-    secondaryColor,
-}: ToolCardProps) => {
+const ToolCard = ({ title, url, href, primaryColor }: ToolCardProps) => {
     return (
         <motion.div
             whileHover={{
@@ -25,7 +19,7 @@ const ToolCard = ({
             <Link href={href}>
                 <Card
                     style={{ backgroundColor: primaryColor }}
-                    className={`bg-[${primaryColor}] text-${secondaryColor} font-sans border-none rounded-3xl`}
+                    className={`bg-[${primaryColor}] text-slate-50 font-sans border-none rounded-3xl`}
                 >
                     <CardHeader>
                         <CardTitle>
