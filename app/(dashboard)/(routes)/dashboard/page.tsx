@@ -1,7 +1,7 @@
 'use client'
 import { useUser } from '@clerk/nextjs'
 import ToolsSection from '@/components/custom/ToolsSection'
-import DashboardSVG from '@/components/SVGanimations/DashboardSVG'
+import LogoSVG from '@/components/SVGanimations/LogoSVG'
 import { DotWave } from '@uiball/loaders'
 
 export default function DashboardPage() {
@@ -9,7 +9,7 @@ export default function DashboardPage() {
     return (
         <section className="flex justify-center w-screen max-w-screen h-screen max-h-screen overflow-hidden">
             <div className="absolute overflow-hidden h-screen max-h-screen w-full lg:flex lg:flex-col items-start lg:justify-center">
-                <DashboardSVG />
+                <LogoSVG width={800} height={800} opacity={5} />
             </div>
             <div className="max-w-screen relative max-h-screen flex flex-col items-start">
                 <div className="m-0 pl-4 pt-4 md:pt-24 mt-8 mb-8">

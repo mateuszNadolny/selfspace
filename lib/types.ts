@@ -4,3 +4,9 @@ export interface ToolCardProps {
     href: string
     primaryColor: string
 }
+
+export interface SVGComponentProps {
+    width: number
+    height: number
+    opacity: number
+}

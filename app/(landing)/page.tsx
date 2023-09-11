@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import LogoSVG from '@/components/SVGanimations/LogoSVG'
 
 const LandingPage = () => {
     return (
@@ -10,13 +11,7 @@ const LandingPage = () => {
             style={{ backgroundImage: "url('/background.svg')" }}
         >
             <div className="flex flex-col items-center justify-center h-full ">
-                <Image
-                    src="/leaves.svg"
-                    width={200}
-                    height={200}
-                    alt="Leaves"
-                    className="mb-3 animate-slide-down"
-                />
+                <LogoSVG width={200} height={200} opacity={100} />
                 <h1 className="text-4xl text-slate-50 font-alegreya font-bold my-4 animate-slide-down">
                     Welcome to Selfspace
                 </h1>
