@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -26,6 +24,8 @@ import {
     SelectValue,
 } from '@/components/ui/select'
 
+import { MeditationFormProps } from '@/lib/types'
+
 const formSchema = z.object({
     duration: z.string().regex(new RegExp('^(?:[1-9]|[1-4][0-9])$'), {
         message: 'Meditation should take between 1 and 40 minutes',
@@ -33,7 +33,12 @@ const formSchema = z.object({
     sound: z.string(),
 })
 
-const MeditationForm = () => {
+const MeditationForm = ({
+    isSession,
+    setIsSession,
+    sessionData,
+    setSessionData,
+}: MeditationFormProps) => {
     // const [duration, setDuration] = useState<number>(10)
     // const [sound, setSound] = useState<string>('none')
 
@@ -46,11 +51,24 @@ const MeditationForm = () => {
     })
 
     function onSubmit(data: z.infer<typeof formSchema>) {
-        console.log(data)
+        if (setIsSession && setSessionData) {
+            setIsSession(true)
+            setSessionData(data)
+        }
     }
 
     return (
-        <div className="w-full relative z-10">
+        <motion.div
+            className="w-full relative z-10"
+            initial={{ rotate: 0, opacity: 1 }}
+            animate={isSession && { opacity: 0 }}
+            transition={{
+                type: 'spring',
+                stiffness: 260,
+                damping: 20,
+                duration: 1,
+            }}
+        >
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -143,7 +161,7 @@ const MeditationForm = () => {
                     </motion.div>
                 </form>
             </Form>
-        </div>
+        </motion.div>
     )
 }
 
