@@ -11,7 +11,7 @@ const pathVariants = {
     visible: {
         opacity: 1,
         pathLength: 1,
-        fill: 'rgba(255, 255, 255, 1)',
+        fill: 'rgba(255, 255, 255, 0.8)',
     },
 }
 
@@ -21,9 +21,8 @@ const LogoSVG = ({ width, height, opacity }: SVGComponentProps) => {
             width={`${width}px`}
             height={`${height}px`}
             viewBox="0 0 1024 1024"
-            className={`path-item w-auto absolute lg:relative top-[9rem] lg:top-auto opacity-[${opacity}%] md:opacity-[${
-                opacity / 2
-            }%] lg:w-1/2`}
+            className="path-item w-auto absolute lg:relative top-[9rem] lg:top-auto lg:w-1/2"
+            style={{ opacity: opacity / 100 }}
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
         >
