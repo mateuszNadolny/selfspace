@@ -8,8 +8,6 @@ import MeditationSession from './MeditationSession'
 
 import { MeditationSessionDataProps } from '@/lib/types'
 
-import { formatMinutes } from '@/lib/utils'
-
 const MeditationSection = () => {
     const [isSession, setIsSession] = React.useState<boolean>(false)
     const [sessionData, setSessionData] =

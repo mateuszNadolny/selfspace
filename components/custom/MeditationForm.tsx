@@ -39,9 +39,6 @@ const MeditationForm = ({
     sessionData,
     setSessionData,
 }: MeditationFormProps) => {
-    // const [duration, setDuration] = useState<number>(10)
-    // const [sound, setSound] = useState<string>('none')
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
