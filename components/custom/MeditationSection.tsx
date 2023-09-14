@@ -29,7 +29,8 @@ const MeditationSection = () => {
             <MeditationSession
                 isSession={isSession}
                 setIsSession={setIsSession}
-                expiryTimestamp={formatMinutes(sessionData.duration)}
+                sessionData={sessionData}
+                setSessionData={setSessionData}
             />
         </section>
     )

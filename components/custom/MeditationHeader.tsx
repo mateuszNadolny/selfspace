@@ -8,7 +8,7 @@ const MeditationHeader = ({ isSession }: MeditationComponentProps) => {
     return (
         <motion.div
             initial={{ rotate: 0, opacity: 1 }}
-            animate={isSession && { opacity: 0 }}
+            animate={isSession ? { opacity: 0 } : { opacity: 1 }}
             transition={{
                 type: 'spring',
                 stiffness: 260,

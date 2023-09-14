@@ -61,7 +61,7 @@ const MeditationForm = ({
         <motion.div
             className="w-full relative z-10"
             initial={{ rotate: 0, opacity: 1 }}
-            animate={isSession && { opacity: 0 }}
+            animate={isSession ? { opacity: 0 } : { opacity: 1 }}
             transition={{
                 type: 'spring',
                 stiffness: 260,

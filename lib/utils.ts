@@ -11,3 +11,7 @@ export function formatMinutes(time: string) {
     const targetDate = new Date(currentDate.getTime() + minutes * 60000)
     return targetDate
 }
+
+export function formatTimeUnit(value: number) {
+    return String(value).padStart(2, '0')
+}
