@@ -39,7 +39,7 @@ const MeditationSession = ({
 
     React.useEffect(() => {
         if (sessionData.sound !== 'none') {
-            bgSoundRef.current.src = `/audio/${sessionData.sound}.mp3`
+            bgSoundRef.current.src = `/audio/${sessionData.sound}.ogg`
         }
 
         expiryTimestampRef.current = expiryTimestamp
