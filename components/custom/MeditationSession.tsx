@@ -1,23 +1,19 @@
 'use client'
 
 import * as React from 'react'
-
 import { useTimer } from 'react-timer-hook'
-
 import { motion } from 'framer-motion'
-
 import { Button } from '@/components/ui/button'
-
 import { MeditationFormProps } from '@/lib/types'
-
 import { formatMinutes, formatTimeUnit } from '@/lib/utils'
+import { Howl } from 'howler'
 
 const MeditationSession = ({
     isSession,
     setIsSession,
     sessionData,
 }: MeditationFormProps) => {
-    const bgSoundRef = React.useRef(new Audio())
+    const bgSoundRef = React.useRef<Howl | null>(null)
 
     const expiryTimestamp = formatMinutes(sessionData.duration)
     const expiryTimestampRef = React.useRef(expiryTimestamp)
@@ -25,13 +21,13 @@ const MeditationSession = ({
     const { seconds, minutes, isRunning, pause, restart } = useTimer({
         expiryTimestamp,
         onExpire: () => {
-            const bellSound = new Audio('/audio/ding.mp3')
-            bellSound.loop = false
+            const bellSound = new Howl({ src: '/audio/ding.ogg', loop: false })
             bellSound.play()
             setTimeout(() => {
                 endSession()
-                bgSoundRef.current.pause()
-                bgSoundRef.current.currentTime = 0
+                if (bgSoundRef.current) {
+                    bgSoundRef.current.stop()
+                }
             }, 1500)
         },
         autoStart: false,
@@ -39,19 +35,29 @@ const MeditationSession = ({
 
     React.useEffect(() => {
         if (sessionData.sound !== 'none') {
-            bgSoundRef.current.src = `/audio/${sessionData.sound}.ogg`
+            if (bgSoundRef.current) {
+                bgSoundRef.current.unload()
+            }
+            bgSoundRef.current = new Howl({
+                src: [`/audio/${sessionData.sound}.ogg`],
+                loop: true,
+                preload: true,
+                volume: 0,
+            })
         }
 
         expiryTimestampRef.current = expiryTimestamp
-        bgSoundRef.current.loop = true
-        bgSoundRef.current.preload = 'auto'
 
         if (isSession) {
-            bgSoundRef.current.play()
+            if (bgSoundRef.current) {
+                bgSoundRef.current.play()
+                bgSoundRef.current.fade(0, 1, 2000)
+            }
             restart(expiryTimestampRef.current)
         } else if (!isSession && isRunning) {
-            bgSoundRef.current.pause()
-            bgSoundRef.current.currentTime = 0
+            if (bgSoundRef.current) {
+                bgSoundRef.current.stop()
+            }
             pause()
         }
     }, [isSession, sessionData, expiryTimestampRef])
