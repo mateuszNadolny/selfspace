@@ -138,7 +138,7 @@ const MeditationForm = ({
                                             Spaceship
                                         </SelectItem>
                                         <SelectItem value="noise">
-                                            Brown noise
+                                            Noise
                                         </SelectItem>
                                     </SelectContent>
                                 </Select>
