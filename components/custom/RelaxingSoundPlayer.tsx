@@ -71,7 +71,7 @@ const RelaxingSoundPlayer = () => {
         // Play or stop the sound based on the isPlaying state
         if (isPlaying) {
             bgSoundRef.current?.play()
-            bgSoundRef.current?.fade(0, 1, 2000)
+            bgSoundRef.current?.fade(0, 1, 1000)
         } else {
             bgSoundRef.current?.stop()
         }
@@ -80,7 +80,7 @@ const RelaxingSoundPlayer = () => {
     return (
         <div className="flex gap-10 flex-col items-center relative">
             <div
-                className="relative w-[80%] md:w-[50%] h-[50px] font-sans text-slate-50 text-3xl flex justify-around"
+                className="relative w-[80%] md:w-[50%] h-[50px] font-sans text-slate-50 text-3xl flex justify-around mt-6 mb-6"
                 id="carousel"
             >
                 <AnimatePresence initial={false} custom={direction} mode="wait">
