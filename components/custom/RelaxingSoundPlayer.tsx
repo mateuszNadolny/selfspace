@@ -53,7 +53,6 @@ const RelaxingSoundPlayer = () => {
     }
 
     React.useEffect(() => {
-        // Create a new Howl instance only when the soundIndex changes
         bgSoundRef.current = new Howl({
             src: [`/audio/${sounds[soundIndex]}.ogg`],
             loop: true,
@@ -62,13 +61,11 @@ const RelaxingSoundPlayer = () => {
         })
 
         return () => {
-            // Stop the sound when the component is unmounted or when the sound changes
             bgSoundRef.current?.stop()
         }
     }, [soundIndex])
 
     React.useEffect(() => {
-        // Play or stop the sound based on the isPlaying state
         if (isPlaying) {
             bgSoundRef.current?.play()
             bgSoundRef.current?.fade(0, 1, 1000)
