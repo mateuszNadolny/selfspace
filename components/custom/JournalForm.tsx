@@ -32,8 +32,7 @@ const JournalForm = () => {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     })
-
-    function onSubmit(data: z.infer<typeof FormSchema>) {
+    async function onSubmit(data: z.infer<typeof FormSchema>) {
         toast({
             title: 'Entry added to journal',
             duration: 2000,
@@ -58,7 +57,7 @@ const JournalForm = () => {
                             <FormControl>
                                 <Textarea
                                     placeholder="Write whatever comes to your mind"
-                                    className="resize-none h-96 bg-transparent border-none outline-none "
+                                    className="resize-none h-80 bg-transparent border-none outline-none "
                                     {...field}
                                 />
                             </FormControl>
