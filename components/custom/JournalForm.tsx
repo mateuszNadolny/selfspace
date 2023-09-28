@@ -1,5 +1,7 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -38,11 +40,16 @@ const FormSchema = z.object({
 })
 
 const JournalForm = () => {
+    const router = useRouter()
     const { user } = useUser()
     const userId = user?.id
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
+        defaultValues: {
+            title: '',
+            entry: '',
+        },
     })
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         const { title, entry } = data
@@ -61,6 +68,11 @@ const JournalForm = () => {
                 title: 'Entry added to journal',
                 duration: 2000,
                 variant: 'default',
+                description: (
+                    <Button onClick={() => router.push('/dashboard')}>
+                        Click here to view all entries
+                    </Button>
+                ),
             })
         } else {
             toast({
