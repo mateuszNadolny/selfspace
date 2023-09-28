@@ -76,14 +76,14 @@ const MeditationForm = ({
                         name="duration"
                         render={({ field }) => (
                             <FormItem className=" w-[250px] animate-slide-down">
-                                <FormLabel className="mb-2 text-xl text-slate-500 font-alegreya  mt-4">
+                                <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
                                     Duration (mins)
                                 </FormLabel>
                                 <FormControl>
                                     <Input
                                         type="number"
                                         {...field}
-                                        className=" border-none outline-none focus:outline-slate-600 bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                        className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
                                         onKeyPress={(
                                             e: React.KeyboardEvent<HTMLInputElement>
                                         ) => {
@@ -106,7 +106,7 @@ const MeditationForm = ({
                         name="sound"
                         render={({ field }) => (
                             <FormItem className="w-[250px] animate-slide-down ease-in-out">
-                                <FormLabel className="mb-2 text-xl text-slate-500 font-alegreya ">
+                                <FormLabel className="mb-2 hover:outline-slate-600  text-xl text-slate-500 font-alegreya ">
                                     Sound selection
                                 </FormLabel>
                                 <Select

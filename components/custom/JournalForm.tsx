@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
+import { useUser } from '@clerk/nextjs'
+
 import { Button } from '@/components/ui/button'
 import {
     Form,
@@ -14,10 +16,17 @@ import {
     FormMessage,
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
+import { Input } from '@/components/ui/input'
 import { Toaster } from '@/components/ui/toaster'
 import { toast } from '@/components/ui/use-toast'
 
 const FormSchema = z.object({
+    title: z
+        .string()
+        .min(1, {
+            message: 'Title is required.',
+        })
+        .max(50, { message: 'Title must not be longer than 50 characters.' }),
     entry: z
         .string()
         .min(10, {
@@ -29,31 +38,69 @@ const FormSchema = z.object({
 })
 
 const JournalForm = () => {
+    const { user } = useUser()
+    const userId = user?.id
+
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     })
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        toast({
-            title: 'Entry added to journal',
-            duration: 2000,
-            variant: 'default',
+        const { title, entry } = data
+
+        const response = await fetch('api/create-entry', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title, entry, userId }),
         })
+
+        if (response.ok) {
+            form.reset()
+            toast({
+                title: 'Entry added to journal',
+                duration: 2000,
+                variant: 'default',
+            })
+        } else {
+            toast({
+                title: 'Something went wrong',
+                duration: 2000,
+                variant: 'destructive',
+            })
+        }
     }
 
     return (
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6 font-sans text-slate-50 w-screen flex flex-col items-center relative"
+                className="space-y-6 font-sans text-slate-50 w-screen flex flex-col items-center relative animate-slide-down"
             >
                 <FormField
                     control={form.control}
-                    name="entry"
+                    name="title"
                     render={({ field }) => (
                         <FormItem className="w-4/5 md:w-3/5">
                             <FormLabel className="mb-2 text-xl text-slate-300 text-center">
                                 Mood entry
                             </FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="Enter the title"
+                                    {...field}
+                                    className="bg-transparent border-none outline-none ring-offset-background placeholder:text-muted-foreground focus-visible:outline-slate-800 focus-visible:ring-slate-600 hover:border-0 disabled:cursor-not-allowed disabled:opacity-50 hover:ring-0"
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="entry"
+                    render={({ field }) => (
+                        <FormItem className="w-4/5 md:w-3/5">
                             <FormControl>
                                 <Textarea
                                     placeholder="Write whatever comes to your mind"
