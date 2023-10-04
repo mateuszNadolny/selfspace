@@ -69,7 +69,7 @@ const JournalForm = () => {
                 duration: 2000,
                 variant: 'default',
                 description: (
-                    <Button onClick={() => router.push('/dashboard')}>
+                    <Button onClick={() => router.push('/entries')}>
                         Click here to view all entries
                     </Button>
                 ),
