@@ -1,4 +1,5 @@
 import FocusSVG from '@/components/SVGanimations/FocusSVG'
+import FocusSection from '@/components/custom/FocusSection'
 
 const FocusPage = () => {
     return (
@@ -14,6 +15,7 @@ const FocusPage = () => {
                     Set your pomodoro session timer and dive into deep work
                 </h3>
             </div>
+            <FocusSection />
         </section>
     )
 }
