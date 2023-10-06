@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import { useRef, useEffect } from 'react'
 import { useTimer } from 'react-timer-hook'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
@@ -13,10 +13,10 @@ const MeditationSession = ({
     setIsSession,
     sessionData,
 }: MeditationFormProps) => {
-    const bgSoundRef = React.useRef<Howl | null>(null)
+    const bgSoundRef = useRef<Howl | null>(null)
 
     const expiryTimestamp = formatMinutes(sessionData.duration)
-    const expiryTimestampRef = React.useRef(expiryTimestamp)
+    const expiryTimestampRef = useRef(expiryTimestamp)
 
     const { seconds, minutes, isRunning, pause, restart } = useTimer({
         expiryTimestamp,
@@ -33,7 +33,7 @@ const MeditationSession = ({
         autoStart: false,
     })
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (sessionData.sound !== 'none') {
             if (bgSoundRef.current) {
                 bgSoundRef.current.unload()

@@ -5,8 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { ToolCardProps } from '@/lib/types'
 
-import React from 'react'
-
 const ToolCard = ({ title, url, href, primaryColor }: ToolCardProps) => {
     return (
         <motion.div

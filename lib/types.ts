@@ -11,21 +11,32 @@ export interface SVGComponentProps {
     opacity: number
 }
 
+export interface SessionHeaderComponentProps {
+    isSession: boolean
+    setIsSession?: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface FocusSessionDataProps {
+    duration: string
+    break: string
+}
+
 export interface MeditationSessionDataProps {
     duration: string
     sound: string
 }
 
-export interface MeditationComponentProps {
-    isSession: boolean
-    setIsSession?: React.Dispatch<React.SetStateAction<boolean>>
+// export interface MeditationSessionDurationProps
+//     extends SessionHeaderComponentProps {
+//     expiryTimestamp: Date
+// }
+
+export interface FocusFormProps extends SessionHeaderComponentProps {
+    sessionData: FocusSessionDataProps
+    setSessionData: React.Dispatch<React.SetStateAction<FocusSessionDataProps>>
 }
 
-export interface MeditationSessionProps extends MeditationComponentProps {
-    expiryTimestamp: Date
-}
-
-export interface MeditationFormProps extends MeditationComponentProps {
+export interface MeditationFormProps extends SessionHeaderComponentProps {
     sessionData: MeditationSessionDataProps
     setSessionData: React.Dispatch<
         React.SetStateAction<MeditationSessionDataProps>

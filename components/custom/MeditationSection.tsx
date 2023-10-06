@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import { useState } from 'react'
 
 import MeditationForm from './MeditationForm'
 import MeditationHeader from '@/components/custom/MeditationHeader'
@@ -9,12 +9,11 @@ import MeditationSession from './MeditationSession'
 import { MeditationSessionDataProps } from '@/lib/types'
 
 const MeditationSection = () => {
-    const [isSession, setIsSession] = React.useState<boolean>(false)
-    const [sessionData, setSessionData] =
-        React.useState<MeditationSessionDataProps>({
-            duration: '10',
-            sound: 'none',
-        })
+    const [isSession, setIsSession] = useState<boolean>(false)
+    const [sessionData, setSessionData] = useState<MeditationSessionDataProps>({
+        duration: '10',
+        sound: 'none',
+    })
     return (
         <section>
             <MeditationHeader isSession={isSession} />

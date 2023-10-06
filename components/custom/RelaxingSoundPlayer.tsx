@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { wrap } from 'popmotion'
@@ -39,11 +39,9 @@ const swipePower = (offset: number, velocity: number) => {
 }
 
 const RelaxingSoundPlayer = () => {
-    const [isPlaying, setIsPlaying] = React.useState<boolean>(false)
-    const [[page, direction], setPage] = React.useState<[number, number]>([
-        0, 0,
-    ])
-    const bgSoundRef = React.useRef<Howl | null>(null)
+    const [isPlaying, setIsPlaying] = useState<boolean>(false)
+    const [[page, direction], setPage] = useState<[number, number]>([0, 0])
+    const bgSoundRef = useRef<Howl | null>(null)
 
     const soundIndex = wrap(0, sounds.length, page)
 
@@ -52,7 +50,7 @@ const RelaxingSoundPlayer = () => {
         setIsPlaying(false)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         bgSoundRef.current = new Howl({
             src: [`/audio/${sounds[soundIndex]}.ogg`],
             loop: true,
@@ -65,7 +63,7 @@ const RelaxingSoundPlayer = () => {
         }
     }, [soundIndex])
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (isPlaying) {
             bgSoundRef.current?.play()
             bgSoundRef.current?.fade(0, 1, 1000)
