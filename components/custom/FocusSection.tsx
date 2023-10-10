@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import FocusForm from './FocusForm'
-import FocusHeader from './FocusHeader'
 import FocusSession from './FocusSession'
 
 import { FocusSessionDataProps } from '@/lib/types'
@@ -16,19 +15,32 @@ const FocusSection = () => {
     })
     return (
         <section>
-            <FocusHeader isSession={isSession} />
-            <FocusForm
-                isSession={isSession}
-                setIsSession={setIsSession}
-                sessionData={sessionData}
-                setSessionData={setSessionData}
-            />
-            <FocusSession
-                isSession={isSession}
-                setIsSession={setIsSession}
-                sessionData={sessionData}
-                setSessionData={setSessionData}
-            />
+            <div className="w-screen relative m-0 flex pt-10 lg:pt-24 flex-col items-center mb-16 lg:mb-20">
+                <h1 className="text-center text-2xl md:text-5xl text-slate-50 font-alegreya mt-10 mb-2 animate-slide-down">
+                    Focus timer
+                </h1>
+                <h3 className="w-4/5 text-slate-500 text-2xl md:text-3xl font-sans animate-slide-down text-center">
+                    Set your pomodoro session timer and dive into deep work
+                </h3>
+            </div>
+            <div className="lg:flex w-full">
+                <div className="w-full flex justify-end">
+                    <FocusSession
+                        isSession={isSession}
+                        setIsSession={setIsSession}
+                        sessionData={sessionData}
+                        setSessionData={setSessionData}
+                    />
+                </div>
+                <div className="w-full flex">
+                    <FocusForm
+                        isSession={isSession}
+                        setIsSession={setIsSession}
+                        sessionData={sessionData}
+                        setSessionData={setSessionData}
+                    />
+                </div>
+            </div>
         </section>
     )
 }

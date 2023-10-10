@@ -50,7 +50,7 @@ const FocusForm = ({
 
     return (
         <motion.div
-            className="w-full relative z-10"
+            className="w-full relative z-10 flex pl-[10rem] justify-start"
             initial={{ rotate: 0, opacity: 1 }}
             animate={isSession ? { opacity: 0 } : { opacity: 1 }}
             transition={{
@@ -63,13 +63,13 @@ const FocusForm = ({
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-5 flex flex-col items-center mb-4"
+                    className="space-y-5 h-full flex flex-col items-center justify-center mb-4"
                 >
                     <FormField
                         control={form.control}
                         name="duration"
                         render={({ field }) => (
-                            <FormItem className=" w-[250px] animate-slide-down">
+                            <FormItem className=" w-[250px] animate-slide-down text-center">
                                 <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
                                     Focus
                                 </FormLabel>
@@ -99,7 +99,7 @@ const FocusForm = ({
                         control={form.control}
                         name="break"
                         render={({ field }) => (
-                            <FormItem className=" w-[250px] animate-slide-down">
+                            <FormItem className=" w-[250px] animate-slide-down  text-center">
                                 <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
                                     Break
                                 </FormLabel>
