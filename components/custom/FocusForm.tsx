@@ -58,7 +58,7 @@ const FocusForm = ({
         <div className="w-full relative z-10 flex justify-center">
             <Popover>
                 <PopoverTrigger className="text-slate-50 self-center mt-4">
-                    <motion.button
+                    <motion.div
                         className="w-full flex justify-center"
                         whileHover={
                             !isSession
@@ -77,7 +77,7 @@ const FocusForm = ({
                                       rotate: 0,
                                   }
                         }
-                        disabled={isSession}
+                        style={isSession ? { display: 'none' } : {}}
                     >
                         <Image
                             className="opacity-[30%]"
@@ -86,7 +86,7 @@ const FocusForm = ({
                             alt="settings"
                             src={'/settings.svg'}
                         />
-                    </motion.button>
+                    </motion.div>
                 </PopoverTrigger>
                 <PopoverContent className="bg-gradient-to-b from-startGradient from-1% to-endGradient to-95%">
                     <Form {...form}>
