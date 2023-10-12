@@ -23,8 +23,8 @@ const FocusSection = () => {
                     Set your pomodoro session timer and dive into deep work
                 </h3>
             </div>
-            <div className="lg:flex w-full">
-                <div className="w-full flex justify-end">
+            <div className="flex flex-col justify-center w-full">
+                <div className="w-full flex justify-center">
                     <FocusSession
                         isSession={isSession}
                         setIsSession={setIsSession}
@@ -32,7 +32,7 @@ const FocusSection = () => {
                         setSessionData={setSessionData}
                     />
                 </div>
-                <div className="w-full flex">
+                <div className="w-full">
                     <FocusForm
                         isSession={isSession}
                         setIsSession={setIsSession}

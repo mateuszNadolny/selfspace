@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form'
 
 import { motion } from 'framer-motion'
 
+import Image from 'next/image'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -16,6 +18,12 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/ui/form'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover'
+
 import { FocusFormProps } from '@/lib/types'
 
 const formSchema = z.object({
@@ -42,104 +50,133 @@ const FocusForm = ({
 
     function onSubmit(data: z.infer<typeof formSchema>) {
         if (setIsSession && setSessionData) {
-            setIsSession(true)
             setSessionData(data)
-            console.log(data)
         }
     }
 
     return (
-        <motion.div
-            className="w-full relative z-10 flex pl-[10rem] justify-start"
-            initial={{ rotate: 0, opacity: 1 }}
-            animate={isSession ? { opacity: 0 } : { opacity: 1 }}
-            transition={{
-                type: 'spring',
-                stiffness: 260,
-                damping: 20,
-                duration: 1,
-            }}
-        >
-            <Form {...form}>
-                <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-5 h-full flex flex-col items-center justify-center mb-4"
-                >
-                    <FormField
-                        control={form.control}
-                        name="duration"
-                        render={({ field }) => (
-                            <FormItem className=" w-[250px] animate-slide-down text-center">
-                                <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
-                                    Focus
-                                </FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="number"
-                                        {...field}
-                                        className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
-                                        onKeyPress={(
-                                            e: React.KeyboardEvent<HTMLInputElement>
-                                        ) => {
-                                            if (
-                                                ['.', ',', '-', '+'].includes(
-                                                    e.key
-                                                )
-                                            ) {
-                                                e.preventDefault()
-                                            }
-                                        }}
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="break"
-                        render={({ field }) => (
-                            <FormItem className=" w-[250px] animate-slide-down  text-center">
-                                <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
-                                    Break
-                                </FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="number"
-                                        {...field}
-                                        className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
-                                        onKeyPress={(
-                                            e: React.KeyboardEvent<HTMLInputElement>
-                                        ) => {
-                                            if (
-                                                ['.', ',', '-', '+'].includes(
-                                                    e.key
-                                                )
-                                            ) {
-                                                e.preventDefault()
-                                            }
-                                        }}
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-
-                    <motion.div
-                        whileTap={{ scale: 0.9 }}
-                        className="font-alegreya pt-[1rem] lg:pt-[2rem] animate-slide-down"
+        <div className="w-full relative z-10 flex justify-center">
+            <Popover>
+                <PopoverTrigger className="text-slate-50 self-center mt-4">
+                    <motion.button
+                        className="w-full flex justify-center"
+                        whileHover={
+                            !isSession
+                                ? { scale: 1.2, rotate: 90 }
+                                : { scale: 1, rotate: 0 }
+                        }
+                        whileTap={
+                            !isSession
+                                ? {
+                                      scale: 0.8,
+                                      rotate: -90,
+                                      borderRadius: '100%',
+                                  }
+                                : {
+                                      scale: 1,
+                                      rotate: 0,
+                                  }
+                        }
+                        disabled={isSession}
                     >
-                        <Button
-                            type="submit"
-                            className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7 animate-slide-down"
+                        <Image
+                            className="opacity-[30%]"
+                            height={30}
+                            width={30}
+                            alt="settings"
+                            src={'/settings.svg'}
+                        />
+                    </motion.button>
+                </PopoverTrigger>
+                <PopoverContent className="bg-gradient-to-b from-startGradient from-1% to-endGradient to-95%">
+                    <Form {...form}>
+                        <form
+                            onSubmit={form.handleSubmit(onSubmit)}
+                            className="space-y-5 h-full flex flex-col items-center justify-center mb-4"
                         >
-                            Focus
-                        </Button>
-                    </motion.div>
-                </form>
-            </Form>
-        </motion.div>
+                            <FormField
+                                control={form.control}
+                                name="duration"
+                                render={({ field }) => (
+                                    <FormItem className=" w-[250px] animate-slide-down text-center">
+                                        <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
+                                            Focus
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="number"
+                                                {...field}
+                                                className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                                onKeyPress={(
+                                                    e: React.KeyboardEvent<HTMLInputElement>
+                                                ) => {
+                                                    if (
+                                                        [
+                                                            '.',
+                                                            ',',
+                                                            '-',
+                                                            '+',
+                                                        ].includes(e.key)
+                                                    ) {
+                                                        e.preventDefault()
+                                                    }
+                                                }}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="break"
+                                render={({ field }) => (
+                                    <FormItem className=" w-[250px] animate-slide-down  text-center">
+                                        <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
+                                            Break
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="number"
+                                                {...field}
+                                                className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                                onKeyPress={(
+                                                    e: React.KeyboardEvent<HTMLInputElement>
+                                                ) => {
+                                                    if (
+                                                        [
+                                                            '.',
+                                                            ',',
+                                                            '-',
+                                                            '+',
+                                                        ].includes(e.key)
+                                                    ) {
+                                                        e.preventDefault()
+                                                    }
+                                                }}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <motion.div
+                                whileTap={{ scale: 0.9 }}
+                                className="font-alegreya pt-[1rem] lg:pt-[2rem] animate-slide-down"
+                            >
+                                <Button
+                                    type="submit"
+                                    className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7"
+                                >
+                                    Save
+                                </Button>
+                            </motion.div>
+                        </form>
+                    </Form>
+                </PopoverContent>
+            </Popover>
+        </div>
     )
 }
 

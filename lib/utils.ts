@@ -15,3 +15,7 @@ export function formatMinutes(time: string) {
 export function formatTimeUnit(value: number) {
     return String(value).padStart(2, '0')
 }
+
+export function minutesToMilliseconds(minutes: string) {
+    return +minutes * 60 * 1000
+}
