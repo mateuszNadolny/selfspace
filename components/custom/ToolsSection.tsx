@@ -45,7 +45,7 @@ const tools = [
 
 const ToolsSection = () => {
     return (
-        <section>
+        <div>
             <p className="font-alegreya text-slate-50 mb-6 text-2xl">
                 Try one of our tools
             </p>
@@ -67,7 +67,7 @@ const ToolsSection = () => {
                     </motion.div>
                 ))}
             </div>
-        </section>
+        </div>
     )
 }
 

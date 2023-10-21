@@ -15,7 +15,7 @@ const MeditationSection = () => {
         sound: 'none',
     })
     return (
-        <section>
+        <div>
             <MeditationHeader isSession={isSession} />
             <MeditationForm
                 isSession={isSession}
@@ -29,7 +29,7 @@ const MeditationSection = () => {
                 sessionData={sessionData}
                 setSessionData={setSessionData}
             />
-        </section>
+        </div>
     )
 }
 
