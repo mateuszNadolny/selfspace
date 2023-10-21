@@ -1,5 +1,7 @@
 'use client'
 
+import { motion } from 'framer-motion'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
     Card,
@@ -7,15 +9,18 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 import { BreathingSelectionProps } from '@/lib/types'
 const BreathingSelection = ({
     isBoxBreathing,
     setIsBoxBreathing,
+    isSession,
+    setIsSession,
 }: BreathingSelectionProps) => {
     return (
         <div>
-            <div className="flex justify-center w-full relative">
+            <div className="flex justify-center w-full relative animate-slide-down">
                 <Tabs
                     defaultValue="box"
                     className="w-5/6 lg:w-[480px] w- font-sans"
@@ -33,7 +38,7 @@ const BreathingSelection = ({
                             onClick={() => setIsBoxBreathing(false)}
                             className="w-full flex justify-center text-xl"
                         >
-                            4-7-8 calm breathing
+                            4-7-8 breathing
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="box">
@@ -58,6 +63,19 @@ const BreathingSelection = ({
                     </TabsContent>
                 </Tabs>
             </div>
+            <motion.div
+                whileTap={{ scale: 0.9 }}
+                className="font-alegreya relative flex justify-center pt-[1rem] lg:pt-[2rem] animate-slide-down"
+            >
+                <Button
+                    type="submit"
+                    className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7"
+                >
+                    {isBoxBreathing
+                        ? 'Start box breathing'
+                        : 'Start 4-7-8 breathing'}
+                </Button>
+            </motion.div>
         </div>
     )
 }
