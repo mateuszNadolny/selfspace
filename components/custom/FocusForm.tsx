@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -18,6 +19,7 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/ui/form'
+
 import {
     Popover,
     PopoverContent,
@@ -27,8 +29,8 @@ import {
 import { FocusFormProps } from '@/lib/types'
 
 const formSchema = z.object({
-    duration: z.string().regex(new RegExp('^(?:[1-9]|[1-5][0-9]|60)$'), {
-        message: 'Session should take between 1 and 70 minutes',
+    duration: z.string().regex(new RegExp('^(?:10|[1-5][0-9]|70)$'), {
+        message: 'Session should take between 10 and 70 minutes',
     }),
     break: z.string().regex(new RegExp('^(?:[1-5])$'), {
         message: 'Short break should take between 1 and 5 minutes',
@@ -40,6 +42,7 @@ const FocusForm = ({
     setIsSession,
     setSessionData,
 }: FocusFormProps) => {
+    const [formOpen, setFormOpen] = useState<boolean>(false)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -52,11 +55,12 @@ const FocusForm = ({
         if (setIsSession && setSessionData) {
             setSessionData(data)
         }
+        setFormOpen(false)
     }
 
     return (
         <div className="w-full relative z-10 flex justify-center">
-            <Popover>
+            <Popover open={formOpen} onOpenChange={setFormOpen}>
                 <PopoverTrigger className="text-slate-50 self-center mt-4">
                     <motion.div
                         className="w-full flex justify-center"
