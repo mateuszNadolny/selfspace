@@ -68,8 +68,12 @@ const BreathingSelection = ({
                 className="font-alegreya relative flex justify-center pt-[1rem] lg:pt-[2rem] animate-slide-down"
             >
                 <Button
-                    type="submit"
                     className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7"
+                    onClick={() => {
+                        if (setIsSession) {
+                            setIsSession(!isSession)
+                        }
+                    }}
                 >
                     {isBoxBreathing
                         ? 'Start box breathing'
