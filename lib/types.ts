@@ -25,12 +25,6 @@ export interface MeditationSessionDataProps {
     duration: string
     sound: string
 }
-
-// export interface MeditationSessionDurationProps
-//     extends SessionHeaderComponentProps {
-//     expiryTimestamp: Date
-// }
-
 export interface FocusFormProps extends SessionHeaderComponentProps {
     sessionData: FocusSessionDataProps
     setSessionData: React.Dispatch<React.SetStateAction<FocusSessionDataProps>>
@@ -41,4 +35,9 @@ export interface MeditationFormProps extends SessionHeaderComponentProps {
     setSessionData: React.Dispatch<
         React.SetStateAction<MeditationSessionDataProps>
     >
+}
+
+export interface BreathingSelectionProps extends SessionHeaderComponentProps {
+    isBoxBreathing: boolean
+    setIsBoxBreathing: React.Dispatch<React.SetStateAction<boolean>>
 }
