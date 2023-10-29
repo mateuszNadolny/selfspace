@@ -17,7 +17,11 @@ export default function DashboardPage() {
                         {!user ? (
                             <DotWave size={60} speed={1.4} color="gray" />
                         ) : (
-                            ` Welcome back, ${user.firstName}`
+                            ` Welcome back${
+                                user.firstName !== null
+                                    ? `, ${user.firstName}`
+                                    : ''
+                            }`
                         )}
                     </h1>
                     <h3 className="text-slate-500 text-2xl md:text-3xl font-sans animate-slide-down">

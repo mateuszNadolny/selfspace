@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { UserButton } from '@clerk/nextjs'
 
 import { Card } from '@/components/ui/card'
 
@@ -39,18 +40,11 @@ const Footer = () => {
                     whileTap={{ scale: 0.9 }}
                     className="flex flex flex-col items-center drop-shadow-md"
                 >
-                    <Link
-                        href="/"
-                        className="flex flex-col items-center drop-shadow-md"
-                    >
-                        <Image
-                            src="/profile.svg"
-                            alt="profile"
-                            width={30}
-                            height={30}
-                        />
+                    <div className="flex flex-col items-center drop-shadow-md">
+                        <UserButton />
+
                         <p className="text-xs mt-1">Profile</p>
-                    </Link>
+                    </div>
                 </motion.div>
             </Card>
         </div>
