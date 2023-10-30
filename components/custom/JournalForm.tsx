@@ -103,6 +103,7 @@ const JournalForm = () => {
                 <FormField
                     control={form.control}
                     name="title"
+                    disabled={isPosting}
                     render={({ field }) => (
                         <FormItem className="w-4/5 md:w-3/5">
                             <FormLabel className="mb-2 text-xl text-slate-300 text-center">
@@ -122,6 +123,7 @@ const JournalForm = () => {
                 <FormField
                     control={form.control}
                     name="entry"
+                    disabled={isPosting}
                     render={({ field }) => (
                         <FormItem className="w-4/5 md:w-3/5">
                             <FormControl>
