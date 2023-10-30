@@ -71,6 +71,8 @@ const JournalForm = () => {
 
         if (response.ok) {
             form.reset()
+            setIsPosting(false)
+
             toast({
                 title: 'Entry added to journal',
                 duration: 5000,
@@ -82,12 +84,13 @@ const JournalForm = () => {
                 ),
             })
         } else {
+            setIsPosting(false)
+
             toast({
                 title: 'Something went wrong',
                 duration: 2000,
                 variant: 'destructive',
             })
-            setIsPosting(false)
         }
     }
 
