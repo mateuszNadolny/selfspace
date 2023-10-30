@@ -19,7 +19,7 @@ const BreathingSelection = ({
     setIsSession,
 }: BreathingSelectionProps) => {
     return (
-        <div>
+        <div style={isSession ? { opacity: 0 } : { opacity: 1 }}>
             <div className="flex justify-center w-full relative animate-slide-down">
                 <Tabs
                     defaultValue="box"
@@ -68,10 +68,11 @@ const BreathingSelection = ({
                 className="font-alegreya relative flex justify-center pt-[1rem] lg:pt-[2rem] animate-slide-down"
             >
                 <Button
+                    disabled={isSession}
                     className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7"
                     onClick={() => {
                         if (setIsSession) {
-                            setIsSession(!isSession)
+                            setIsSession(true)
                         }
                     }}
                 >
