@@ -106,7 +106,7 @@ const BreathingSession = ({
                 >
                     {isFinished && (
                         <div className="w-full h-full flex justify-center items-center">
-                            <p className="p-10 text-slate-50 text-xl font-sans animate-slide-down">
+                            <p className="p-10 text-slate-50 text-justify text-xl font-sans animate-slide-down">
                                 Your breathing is now finished, please come back
                                 slowly to your normal breathing pace
                             </p>
