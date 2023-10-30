@@ -16,9 +16,6 @@ const JournalPage = () => {
                 <h3 className="w-4/5 text-slate-500 text-2xl md:text-3xl font-sans animate-slide-down text-center">
                     Simply write down how do you feel today
                 </h3>
-                <h1 className="text-center text-2xl md:text-5xl text-slate-50 font-alegreya mt-2 lg:mt-20 mb-2 animate-slide-down">
-                    We are sorry, this section is still in development.
-                </h1>
             </div>
             <JournalForm />
         </section>
