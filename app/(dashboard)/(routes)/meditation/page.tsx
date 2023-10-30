@@ -7,7 +7,6 @@ export default function MediationPage() {
             <div className="absolute overflow-hidden h-screen max-h-screen w-full lg:flex lg:flex-col items-center lg:justify-center ">
                 <MeditationSVG width={800} height={800} opacity={5} />
             </div>
-
             <MeditationSection />
         </section>
     )

@@ -15,7 +15,7 @@ const MeditationHeader = ({ isSession }: SessionHeaderComponentProps) => {
                 damping: 20,
                 duration: 1,
             }}
-            className="w-screen relative m-0 flex pt-10 lg:pt-24 flex-col items-center mb-16 lg:mb-20"
+            className="w-screen relative m-0 flex pt-2 lg:pt-24 flex-col items-center mb-16 lg:mb-20"
         >
             <h1 className="text-center text-2xl md:text-5xl text-slate-50 font-alegreya mt-10 mb-2 animate-slide-down">
                 Meditation
