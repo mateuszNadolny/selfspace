@@ -110,7 +110,7 @@ const FocusForm = ({
                                             <Input
                                                 type="number"
                                                 {...field}
-                                                className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                                className="border-none outline-none focus:outline-slate-600 hover:outline-slate-600 bg-transparent text-xl lg:text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
                                                 onKeyPress={(
                                                     e: React.KeyboardEvent<HTMLInputElement>
                                                 ) => {
@@ -143,7 +143,7 @@ const FocusForm = ({
                                             <Input
                                                 type="number"
                                                 {...field}
-                                                className=" border-none outline-none focus:outline-slate-600 hover:outline-slate-600  bg-transparent text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                                className="border-none outline-none focus:outline-slate-600 hover:outline-slate-600 bg-transparent text-xl lg:text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
                                                 onKeyPress={(
                                                     e: React.KeyboardEvent<HTMLInputElement>
                                                 ) => {
