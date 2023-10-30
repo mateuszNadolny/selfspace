@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useRouter } from 'next/navigation'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,6 +9,8 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 import { useUser } from '@clerk/nextjs'
+
+import { DotWave } from '@uiball/loaders'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -40,6 +44,7 @@ const FormSchema = z.object({
 })
 
 const JournalForm = () => {
+    const [isPosting, setIsPosting] = useState<boolean>(false)
     const router = useRouter()
     const { user } = useUser()
     const userId = user?.id
@@ -53,6 +58,8 @@ const JournalForm = () => {
     })
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         const { title, entry } = data
+
+        setIsPosting(true)
 
         const response = await fetch('api/create-entry', {
             method: 'POST',
@@ -80,6 +87,7 @@ const JournalForm = () => {
                 duration: 2000,
                 variant: 'destructive',
             })
+            setIsPosting(false)
         }
     }
 
@@ -125,13 +133,15 @@ const JournalForm = () => {
                         </FormItem>
                     )}
                 />
-
-                <Button
-                    type="submit"
-                    className="hover:bg-slate-50 hover:text-black animate-slide-down"
-                >
-                    Add entry
-                </Button>
+                {isPosting && <DotWave size={60} speed={1.4} color="gray" />}
+                {!isPosting && (
+                    <Button
+                        type="submit"
+                        className="hover:bg-slate-50 hover:text-black animate-slide-down"
+                    >
+                        Add entry
+                    </Button>
+                )}
             </form>
             <Toaster />
         </Form>
