@@ -66,7 +66,7 @@ const JournalForm = () => {
             form.reset()
             toast({
                 title: 'Entry added to journal',
-                duration: 2000,
+                duration: 5000,
                 variant: 'default',
                 description: (
                     <Button onClick={() => router.push('/entries')}>
