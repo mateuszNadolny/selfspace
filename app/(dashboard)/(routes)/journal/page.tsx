@@ -3,7 +3,7 @@ import JournalSVG from '@/components/SVGanimations/JournalSVG'
 
 const JournalPage = () => {
     return (
-        <section className="max-w-screen relative">
+        <section className="max-w-screen relative max-h-screen h-screen overflow-scroll lg:overflow-hidden">
             <div className="absolute overflow-hidden w-full lg:flex lg:flex-col items-center lg:justify-center ">
                 <JournalSVG width={800} height={800} opacity={5} />
             </div>

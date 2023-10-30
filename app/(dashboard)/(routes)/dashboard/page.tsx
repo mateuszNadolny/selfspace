@@ -7,7 +7,7 @@ import { DotWave } from '@uiball/loaders'
 export default function DashboardPage() {
     const { user } = useUser()
     return (
-        <section className="flex justify-center w-screen max-w-screen h-screen max-h-screen overflow-hidden">
+        <section className="flex justify-center max-w-screen relative max-h-screen h-screen overflow-scroll lg:overflow-hidden">
             <div className="absolute overflow-hidden h-screen max-h-screen w-full lg:flex lg:flex-col items-start lg:justify-center">
                 <LogoSVG width={800} height={800} opacity={16} />
             </div>
