@@ -7,13 +7,6 @@ import { BreathingSessionProps, BreathingPhaseInterface } from '@/lib/types'
 
 import { Button } from '@/components/ui/button'
 
-const phases = [
-    { name: 'inhale', duration: 4, scale: 4, background: '#EFE6FF' },
-    { name: 'hold', duration: 4, scale: 4, background: '#EFE6FF' },
-    { name: 'exhale', duration: 4, scale: 0, background: '#000000' },
-    { name: 'hold', duration: 4, scale: 0, background: '#000000' },
-]
-
 const BreathingSession = ({
     isSession,
     setIsSession,
@@ -27,12 +20,12 @@ const BreathingSession = ({
         {
             name: 'inhale through your nose',
             duration: 4,
-            scale: 4,
+            scale: 1,
         },
         {
             name: 'hold your breath',
             duration: 4,
-            scale: 4,
+            scale: 1,
         },
         {
             name: 'exhale through your mouth',
@@ -51,12 +44,12 @@ const BreathingSession = ({
             {
                 name: 'inhale through your nose',
                 duration: 4,
-                scale: 4,
+                scale: 1,
             },
             {
                 name: 'hold your breath',
                 duration: 7,
-                scale: 4,
+                scale: 1,
             },
             {
                 name: 'exhale through your mouth',
@@ -69,7 +62,7 @@ const BreathingSession = ({
             {
                 name: 'inhale through your nose',
                 duration: 6,
-                scale: 4,
+                scale: 1,
             },
             {
                 name: 'quickly exhale through your mouth',
@@ -136,7 +129,7 @@ const BreathingSession = ({
                     {!isFinished && (
                         <div className="text-slate-50 w-screen h-screen flex flex-col items-center lg:justify-center font-alegreya relative">
                             <motion.div
-                                className="rounded-full w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] absolute top-[30vh] bg-[#EFE6FF]"
+                                className="rounded-full w-[320px] h-[320px] lg:w-[480px] lg:h-[480px] absolute top-[10vh] lg:top-[17vh] bg-[#EFE6FF]"
                                 initial={{ scale: 0 }}
                                 animate={{
                                     scale: phases[currentPhase].scale,
