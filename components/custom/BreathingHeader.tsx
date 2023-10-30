@@ -9,8 +9,12 @@ const BreathingHeader = ({ isSession }: SessionHeaderComponentProps) => {
                 Breathing
             </h1>
             <h3 className="w-4/5 text-slate-500 text-2xl md:text-3xl font-sans animate-slide-down text-center">
-                Take a few deep breathes and calm your mind
+                Take a few deep breathes and calm your mind <br />
             </h3>
+            <h4 className="w-4/5 text-slate-500 text-base font-sans animate-slide-down text-center mt-2">
+                Always remember to do breathing exercises while sitting or
+                laying down
+            </h4>
         </div>
     )
 }

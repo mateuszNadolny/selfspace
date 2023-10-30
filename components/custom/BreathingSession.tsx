@@ -30,14 +30,24 @@ const BreathingSession = ({
             scale: 4,
             background: '#EFE6FF',
         },
-        { name: 'hold', duration: 4, scale: 4, background: '#EFE6FF' },
+        {
+            name: 'hold your breath',
+            duration: 4,
+            scale: 4,
+            background: '#EFE6FF',
+        },
         {
             name: 'exhale through your mouth',
             duration: 4,
             scale: 0,
             background: '#000000',
         },
-        { name: 'hold', duration: 4, scale: 0, background: '#000000' },
+        {
+            name: 'hold your lungs empty',
+            duration: 4,
+            scale: 0,
+            background: '#000000',
+        },
     ]
 
     if (!isBoxBreathing) {
@@ -48,7 +58,12 @@ const BreathingSession = ({
                 scale: 4,
                 background: '#EFE6FF',
             },
-            { name: 'hold', duration: 7, scale: 4, background: '#EFE6FF' },
+            {
+                name: 'hold your breath',
+                duration: 7,
+                scale: 4,
+                background: '#EFE6FF',
+            },
             {
                 name: 'exhale through your mouth',
                 duration: 8,
@@ -71,7 +86,7 @@ const BreathingSession = ({
             }, phases[currentPhase].duration * 1000)
         }
 
-        if (count >= 1 && isSession && setIsSession) {
+        if (count > 10 && isSession && setIsSession) {
             if (interval) clearInterval(interval)
             setIsFinished(true)
             setTimeout(() => {
