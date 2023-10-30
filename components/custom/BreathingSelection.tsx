@@ -23,7 +23,7 @@ const BreathingSelection = ({
             <div className="flex justify-center w-full relative animate-slide-down">
                 <Tabs
                     defaultValue="box"
-                    className="w-5/6 lg:w-[480px] w- font-sans"
+                    className="w-5/6 lg:w-[480px] font-sans"
                 >
                     <TabsList className="flex justify-center items-center mb-5">
                         <TabsTrigger
@@ -42,7 +42,7 @@ const BreathingSelection = ({
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="box">
-                        <Card>
+                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden">
                             <CardHeader>
                                 <CardTitle>Box breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
@@ -52,7 +52,7 @@ const BreathingSelection = ({
                         </Card>
                     </TabsContent>
                     <TabsContent value="calm">
-                        <Card>
+                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden">
                             <CardHeader>
                                 <CardTitle>4-7-8 breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
