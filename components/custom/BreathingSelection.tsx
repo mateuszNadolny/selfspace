@@ -29,21 +29,21 @@ const BreathingSelection = ({
                         <TabsTrigger
                             value="box"
                             onClick={() => setBreathingType('box')}
-                            className="w-full flex justify-center text-xl"
+                            className="w-full flex justify-center lg:text-xl text-sm break-normal"
                         >
                             Box breathing
                         </TabsTrigger>
                         <TabsTrigger
                             value="calm"
                             onClick={() => setBreathingType('calm')}
-                            className="w-full flex justify-center text-xl"
+                            className="w-full flex justify-center flex-wrap lg:text-xl text-sm break-normal"
                         >
                             4-7-8 breathing
                         </TabsTrigger>
                         <TabsTrigger
                             value="awake"
                             onClick={() => setBreathingType('awake')}
-                            className="w-full flex justify-center text-xl"
+                            className="w-full flex justify-center lg:text-xl text-sm break-normal"
                         >
                             Awake breathing
                         </TabsTrigger>
