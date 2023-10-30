@@ -8,7 +8,7 @@ export default function SoundsPage() {
                 <SoundSVG width={800} height={800} opacity={5} />
             </div>
             <div>
-                <div className="w-screen relative m-0 flex pt-10 lg:pt-24 flex-col items-center mb-16 lg:mb-20">
+                <div className="w-screen relative m-0 flex pt-2 lg:pt-24 flex-col items-center mb-16 lg:mb-20">
                     <h1 className="text-center text-2xl md:text-5xl text-slate-50 font-alegreya mt-10 mb-2 animate-slide-down">
                         Relaxing sounds
                     </h1>
