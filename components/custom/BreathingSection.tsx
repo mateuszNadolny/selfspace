@@ -7,22 +7,22 @@ import BreathingHeader from './BreathingHeader'
 import BreathingSession from './BreathingSession'
 
 const BreathingSection = () => {
-    const [isBoxBreathing, setIsBoxBreathing] = useState<boolean>(true)
+    const [breathingType, setBreathingType] = useState<string>('box')
     const [isSession, setIsSession] = useState<boolean>(false)
 
     return (
         <>
             <BreathingHeader isSession={isSession} />
             <BreathingSelection
-                isBoxBreathing={isBoxBreathing}
-                setIsBoxBreathing={setIsBoxBreathing}
+                breathingType={breathingType}
+                setBreathingType={setBreathingType}
                 isSession={isSession}
                 setIsSession={setIsSession}
             />
             <BreathingSession
                 isSession={isSession}
                 setIsSession={setIsSession}
-                isBoxBreathing={isBoxBreathing}
+                breathingType={breathingType}
             />
         </>
     )

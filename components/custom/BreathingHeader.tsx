@@ -13,7 +13,8 @@ const BreathingHeader = ({ isSession }: SessionHeaderComponentProps) => {
             </h3>
             <h4 className="w-4/5 text-slate-500 text-base font-sans animate-slide-down text-center mt-2">
                 Always remember to do breathing exercises while sitting or
-                laying down
+                laying down <br />
+                Always discontinue when you are feeling dizzy or lightheaded
             </h4>
         </div>
     )

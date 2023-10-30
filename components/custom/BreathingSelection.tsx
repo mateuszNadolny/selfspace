@@ -13,8 +13,8 @@ import { Button } from '@/components/ui/button'
 
 import { BreathingSelectionProps } from '@/lib/types'
 const BreathingSelection = ({
-    isBoxBreathing,
-    setIsBoxBreathing,
+    breathingType,
+    setBreathingType,
     isSession,
     setIsSession,
 }: BreathingSelectionProps) => {
@@ -28,17 +28,24 @@ const BreathingSelection = ({
                     <TabsList className="flex justify-center items-center mb-5">
                         <TabsTrigger
                             value="box"
-                            onClick={() => setIsBoxBreathing(true)}
+                            onClick={() => setBreathingType('box')}
                             className="w-full flex justify-center text-xl"
                         >
                             Box breathing
                         </TabsTrigger>
                         <TabsTrigger
                             value="calm"
-                            onClick={() => setIsBoxBreathing(false)}
+                            onClick={() => setBreathingType('calm')}
                             className="w-full flex justify-center text-xl"
                         >
                             4-7-8 breathing
+                        </TabsTrigger>
+                        <TabsTrigger
+                            value="awake"
+                            onClick={() => setBreathingType('awake')}
+                            className="w-full flex justify-center text-xl"
+                        >
+                            Awake breathing
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="box">
@@ -46,7 +53,7 @@ const BreathingSelection = ({
                             <CardHeader>
                                 <CardTitle>Box breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
-                                    {`Box breathing, also known as square breathing, is a simple and effective technique for managing stress and improving concentration. The process involves inhaling, holding the breath, exhaling, and holding the breath again, each for a count of four, creating a ‘box’ pattern. This method helps to calm the nervous system, reduce stress, and enhance focus by bringing attention to the breath and slowing down breathing patterns.`}
+                                    {`Box breathing, also known as square breathing, is a simple and effective technique for managing stress and improving concentration. The process involves inhaling, holding the breath, exhaling, and holding the breath again, each for a count of four seconds, creating a ‘box’ pattern. This method helps to calm the nervous system, reduce stress, and enhance focus by bringing attention to the breath and slowing down breathing patterns.`}
                                 </CardDescription>
                             </CardHeader>
                         </Card>
@@ -56,7 +63,17 @@ const BreathingSelection = ({
                             <CardHeader>
                                 <CardTitle>4-7-8 breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
-                                    {`The 4-7-8 breathing technique is a relaxation method developed by Dr. Andrew Weil, designed to calm the mind and relax the body. The process involves inhaling quietly through the nose for a count of four, holding the breath for a count of seven, and then exhaling completely through the mouth for a count of eight, completing one breath cycle. This breathing pattern helps to reduce anxiety, improve sleep, and bring about a state of tranquility, as it focuses the mind and regulates the flow of breath.`}
+                                    {`The 4-7-8 breathing technique is a relaxation method developed by Dr. Andrew Weil, designed to calm the mind and relax the body. The process involves inhaling quietly through the nose for a count of four seconds, holding the breath for a count of seven seconds, and then exhaling completely through the mouth for a count of eight seconds, completing one breath cycle. This breathing pattern helps to reduce anxiety, improve sleep, and bring about a state of tranquility, as it focuses the mind and regulates the flow of breath.`}
+                                </CardDescription>
+                            </CardHeader>
+                        </Card>
+                    </TabsContent>
+                    <TabsContent value="awake">
+                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden">
+                            <CardHeader>
+                                <CardTitle>Awake breathing</CardTitle>
+                                <CardDescription className="w-auto text-md">
+                                    {`Awake breathing is a great exercise to boost your alertness. It is a perfect replacement for coffee or an afternoon nap. Use this technique whenever you are feeling tired and in need of a quick burst of energy and alertness. The process involves inhaling quickly through the nose for a count of six seconds, and then exhaling for a count of two seconds. This breathing pattern can help you overcome energy slump and tiredness`}
                                 </CardDescription>
                             </CardHeader>
                         </Card>
@@ -76,9 +93,7 @@ const BreathingSelection = ({
                         }
                     }}
                 >
-                    {isBoxBreathing
-                        ? 'Start box breathing'
-                        : 'Start 4-7-8 breathing'}
+                    Start breathing
                 </Button>
             </motion.div>
         </div>

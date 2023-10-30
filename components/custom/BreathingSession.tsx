@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { BreathingSessionProps } from '@/lib/types'
+import { BreathingSessionProps, BreathingPhaseInterface } from '@/lib/types'
 
 import { Button } from '@/components/ui/button'
 
@@ -17,58 +17,64 @@ const phases = [
 const BreathingSession = ({
     isSession,
     setIsSession,
-    isBoxBreathing,
+    breathingType,
 }: BreathingSessionProps) => {
     const [currentPhase, setCurrentPhase] = useState<number>(0)
     const [count, setCount] = useState<number>(0)
     const [isFinished, setIsFinished] = useState<boolean>(false)
 
-    let phases = [
+    let phases: BreathingPhaseInterface[] = [
         {
             name: 'inhale through your nose',
             duration: 4,
             scale: 4,
-            background: '#EFE6FF',
         },
         {
             name: 'hold your breath',
             duration: 4,
             scale: 4,
-            background: '#EFE6FF',
         },
         {
             name: 'exhale through your mouth',
             duration: 4,
             scale: 0,
-            background: '#000000',
         },
         {
             name: 'hold your lungs empty',
             duration: 4,
             scale: 0,
-            background: '#000000',
         },
     ]
 
-    if (!isBoxBreathing) {
+    if (breathingType === 'calm') {
         phases = [
             {
                 name: 'inhale through your nose',
                 duration: 4,
                 scale: 4,
-                background: '#EFE6FF',
             },
             {
                 name: 'hold your breath',
                 duration: 7,
                 scale: 4,
-                background: '#EFE6FF',
             },
             {
                 name: 'exhale through your mouth',
                 duration: 8,
                 scale: 0,
-                background: '#000000',
+            },
+        ]
+    } else if (breathingType === 'awake') {
+        phases = [
+            {
+                name: 'inhale through your nose',
+                duration: 6,
+                scale: 4,
+            },
+            {
+                name: 'quickly exhale through your mouth',
+                duration: 2,
+                scale: 0,
             },
         ]
     }
@@ -130,12 +136,10 @@ const BreathingSession = ({
                     {!isFinished && (
                         <div className="text-slate-50 w-screen h-screen flex flex-col items-center lg:justify-center font-alegreya relative">
                             <motion.div
-                                className="rounded-full w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] absolute top-[30vh]"
+                                className="rounded-full w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] absolute top-[30vh] bg-[#EFE6FF]"
                                 initial={{ scale: 0 }}
                                 animate={{
                                     scale: phases[currentPhase].scale,
-                                    backgroundColor:
-                                        phases[currentPhase].background,
                                 }}
                                 transition={{
                                     duration: phases[currentPhase].duration,

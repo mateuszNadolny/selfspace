@@ -37,8 +37,14 @@ export interface MeditationFormProps extends SessionHeaderComponentProps {
     >
 }
 export interface BreathingSessionProps extends SessionHeaderComponentProps {
-    isBoxBreathing: boolean
+    breathingType: string
 }
 export interface BreathingSelectionProps extends BreathingSessionProps {
-    setIsBoxBreathing: React.Dispatch<React.SetStateAction<boolean>>
+    setBreathingType: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface BreathingPhaseInterface {
+    name: string
+    duration: number
+    scale: number
 }
