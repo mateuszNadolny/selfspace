@@ -116,7 +116,7 @@ const JournalForm = () => {
                             <FormControl>
                                 <Textarea
                                     placeholder="Write whatever comes to your mind"
-                                    className="resize-none h-80 bg-transparent border-none outline-none "
+                                    className="resize-none lg:h-64 bg-transparent border-none outline-none "
                                     {...field}
                                 />
                             </FormControl>
@@ -125,7 +125,7 @@ const JournalForm = () => {
                         </FormItem>
                     )}
                 />
-                <Toaster />
+
                 <Button
                     type="submit"
                     className="hover:bg-slate-50 hover:text-black animate-slide-down"
@@ -133,6 +133,7 @@ const JournalForm = () => {
                     Add entry
                 </Button>
             </form>
+            <Toaster />
         </Form>
     )
 }
