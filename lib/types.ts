@@ -56,3 +56,7 @@ export interface EntryInterface {
     body: string
     createdAt: Date
 }
+
+export interface EntryCardProps extends EntryInterface {
+    handleDelete: (id: string) => void
+}

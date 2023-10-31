@@ -29,3 +29,11 @@ export function formatTimestamp(timestamp: Date): string {
 
     return `${day}/${month}/${year}`
 }
+
+export function createSummaryText(text: string) {
+    if (text.length <= 150) {
+        return text
+    }
+
+    return text.substring(0, 150 - 3) + '...'
+}

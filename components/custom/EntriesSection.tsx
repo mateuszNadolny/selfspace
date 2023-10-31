@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { Pagination, PaginationItem, PaginationCursor } from '@nextui-org/react'
+import { Pagination } from '@nextui-org/react'
 
 import { DotWave } from '@uiball/loaders'
 
@@ -39,13 +39,29 @@ const EntriesSection = () => {
             setIsLoading(false)
         }
         getEntries()
-    }, [userId])
+    }, [userId, entries.length])
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page)
         const lastEntryIndex = page * entriesPerPage
         const firstEntryIndex = lastEntryIndex - entriesPerPage
         setCurrentEntries(entries.slice(firstEntryIndex, lastEntryIndex))
+    }
+
+    async function handleDelete(id: string) {
+        try {
+            const response = await fetch(`/api/delete-entry?id=${id}`, {
+                method: 'DELETE',
+            })
+            if (response.ok) {
+                setEntries(entries.filter((entry) => entry.id !== id))
+                setCurrentEntries(
+                    currentEntries.filter((entry) => entry.id !== id)
+                )
+            }
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
@@ -74,7 +90,7 @@ const EntriesSection = () => {
                                 scale: 0.995,
                             }}
                         >
-                            <EntryCard {...entry} />
+                            <EntryCard {...entry} handleDelete={handleDelete} />
                         </motion.div>
                     ))}
 
@@ -88,7 +104,7 @@ const EntriesSection = () => {
                     )}
                 </AnimatePresence> */}
             </div>
-            {!isLoading && entries.length > 0 && (
+            {!isLoading && entries.length > 3 && (
                 <Pagination
                     loop
                     showControls
