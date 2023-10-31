@@ -40,11 +40,13 @@ const FormSchema = z.object({
         })
         .max(300, {
             message: 'Entry must not be longer than 300 characters.',
-        }),
+        })
+        .trim(),
 })
 
 const JournalForm = () => {
     const [isPosting, setIsPosting] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
     const router = useRouter()
     const { user } = useUser()
     const userId = user?.id
@@ -58,6 +60,13 @@ const JournalForm = () => {
     })
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         const { title, entry } = data
+
+        if (title.length === 0 || entry.length === 0) {
+            setErrorMessage('Title and entry are required')
+            return
+        } else {
+            setErrorMessage('')
+        }
 
         setIsPosting(true)
 
@@ -139,6 +148,9 @@ const JournalForm = () => {
                     )}
                 />
                 {isPosting && <DotWave size={60} speed={1.4} color="gray" />}
+                {errorMessage.length > 0 && (
+                    <small className="text-rose-600	">{errorMessage}</small>
+                )}
                 {!isPosting && (
                     <Button
                         type="submit"
