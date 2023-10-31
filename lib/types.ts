@@ -60,3 +60,11 @@ export interface EntryInterface {
 export interface EntryCardProps extends EntryInterface {
     handleDelete: (id: string) => void
 }
+
+export interface EntryModalProps {
+    id: string
+    title: string
+    body: string
+    isOpenModal: boolean
+    setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+}

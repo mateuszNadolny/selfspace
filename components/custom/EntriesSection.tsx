@@ -86,9 +86,6 @@ const EntriesSection = () => {
                             whileHover={{
                                 scale: 1.02,
                             }}
-                            whileTap={{
-                                scale: 0.995,
-                            }}
                         >
                             <EntryCard {...entry} handleDelete={handleDelete} />
                         </motion.div>

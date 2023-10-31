@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import Image from 'next/image'
 
@@ -14,6 +14,12 @@ import {
     ModalFooter,
     useDisclosure,
 } from '@nextui-org/react'
+import {
+    Dropdown,
+    DropdownTrigger,
+    DropdownMenu,
+    DropdownItem,
+} from '@nextui-org/react'
 
 import {
     Card,
@@ -24,6 +30,8 @@ import {
     CardFooter,
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+
+import EntryModal from './EntryModal'
 
 import { EntryCardProps } from '@/lib/types'
 
@@ -37,10 +45,11 @@ const EntryCard = ({
     handleDelete,
 }: EntryCardProps) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
+    const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
 
     return (
         <>
-            <Card className=" w-full h-[155px] max-h-[155px] my-2 font-sans bg-slate-200 outline-none cursor-pointer">
+            <Card className=" w-full h-[155px] max-h-[155px] my-2 font-sans bg-slate-200 outline-none z-5">
                 <CardHeader className="pb-1">
                     <CardTitle>{title}</CardTitle>
                     <CardDescription className="text-xs lg:text-sm p-0 m-0">
@@ -52,25 +61,40 @@ const EntryCard = ({
                         {createSummaryText(body)}
                     </p>
                 </CardContent>
-                <CardFooter className="flex justify-end relative">
-                    <Button
-                        className="bg-transparent p-0 hover:bg-transparent absolute bottom-0 right-3"
-                        onClick={onOpen}
-                    >
-                        <motion.div
-                            whileHover={{
-                                scale: 1.2,
-                            }}
-                            whileTap={{ scale: 0.9 }}
-                        >
-                            <Image
-                                src="/delete.svg"
-                                alt="delete button"
-                                width={22}
-                                height={22}
-                            />
-                        </motion.div>
-                    </Button>
+                <CardFooter className="flex flex-col justify-end relative">
+                    <Dropdown className="bg-slate-100 rounded-md font-sans">
+                        <DropdownTrigger>
+                            <Button
+                                className="bg-transparent p-0 hover:bg-transparent absolute bottom-0 right-3 z-10"
+                                onClick={() => {}}
+                            >
+                                <Image
+                                    src="/more.svg"
+                                    alt="open more button"
+                                    width={22}
+                                    height={22}
+                                />
+                            </Button>
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Static Actions">
+                            <DropdownItem
+                                key="view"
+                                onClick={() => {
+                                    setIsOpenModal(true)
+                                }}
+                            >
+                                View
+                            </DropdownItem>
+                            <DropdownItem
+                                key="delete"
+                                className="text-rose-600 font-sans"
+                                color="danger"
+                                onClick={onOpen}
+                            >
+                                Delete
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </CardFooter>
             </Card>
             <Modal
@@ -91,7 +115,11 @@ const EntryCard = ({
                             </ModalHeader>
                             <ModalBody>
                                 <p>
-                                    {`Are you sure you want to delete '${title}' entry? This action cannot be reverted.`}
+                                    Are you sure you want to delete
+                                    <span className="font-bold">
+                                        {` "${title}" `}
+                                    </span>
+                                    entry? This action cannot be reverted.
                                 </p>
                             </ModalBody>
                             <ModalFooter>
@@ -111,6 +139,14 @@ const EntryCard = ({
                     )}
                 </ModalContent>
             </Modal>
+            <EntryModal
+                isOpenModal={isOpenModal}
+                setIsOpenModal={setIsOpenModal}
+                id={id}
+                title={title}
+                body={body}
+                handleDelete={handleDelete}
+            />
         </>
     )
 }
