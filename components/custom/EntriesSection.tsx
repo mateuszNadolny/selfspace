@@ -49,8 +49,8 @@ const EntriesSection = () => {
     }
 
     return (
-        <div className="flex flex-col justify-start items-center w-full h-full max-h-screen absoulte">
-            <div className="max-h-[58vh] lg:max-h-[60vh] overflow-y-scroll flex flex-col items-center mb-3 no-scrollbar">
+        <div className="flex flex-col justify-center items-center w-full z-10 relative">
+            <div className="max-h-[58vh] lg:max-h-[60vh] w-full overflow-y-scroll flex flex-col items-center mb-3 no-scrollbar z-10">
                 {!isLoading && entries.length === 0 && (
                     <p className="text-slate-500 font-alegreya text-lg lg:text-2xl text-center p-5">
                         No entries yet. Add your first entry in{' '}
@@ -92,7 +92,7 @@ const EntriesSection = () => {
                 <Pagination
                     loop
                     showControls
-                    className="overflow-hidden text-slate-50 absolute bottom-[5vh]"
+                    className="overflow-hidden text-slate-50 fixed bottom-[8vh]"
                     classNames={{
                         cursor: 'rounded-xl font-sans',
                     }}

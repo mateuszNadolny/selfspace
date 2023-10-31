@@ -18,7 +18,7 @@ import { formatTimestamp } from '@/lib/utils'
 
 const EntryCard = ({ id, title, body, createdAt }: EntryInterface) => {
     return (
-        <Card className="w-[100%] h-[165px] my-2 font-sans bg-slate-200 outline-none cursor-pointer">
+        <Card className=" w-full h-[165px] my-2 font-sans bg-slate-200 outline-none cursor-pointer">
             <CardHeader className="pb-1">
                 <CardTitle>{title}</CardTitle>
                 <CardDescription className="text-xs lg:text-sm p-0 m-0">

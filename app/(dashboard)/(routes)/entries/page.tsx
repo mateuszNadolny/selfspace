@@ -14,8 +14,8 @@ const EntriesPage = () => {
                 <h3 className="w-4/5 text-slate-500 text-2xl md:text-3xl font-sans animate-slide-down text-center mb-2">
                     Celebrate your memories and moments here
                 </h3>
+                <EntriesSection />
             </div>
-            <EntriesSection />
         </section>
     )
 }
