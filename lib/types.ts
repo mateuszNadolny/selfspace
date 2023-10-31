@@ -48,3 +48,11 @@ export interface BreathingPhaseInterface {
     duration: number
     scale: number
 }
+
+export interface EntryInterface {
+    id: string
+    userId: string
+    title: string
+    body: string
+    createdAt: Date
+}

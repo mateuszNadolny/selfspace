@@ -19,3 +19,13 @@ export function formatTimeUnit(value: number) {
 export function minutesToMilliseconds(minutes: string) {
     return +minutes * 60 * 1000
 }
+
+export function formatTimestamp(timestamp: Date): string {
+    const date = new Date(timestamp)
+
+    const day = date.getDate().toString().padStart(2, '0')
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const year = date.getFullYear()
+
+    return `${day}/${month}/${year}`
+}
