@@ -40,8 +40,7 @@ const FormSchema = z.object({
         })
         .max(2000, {
             message: 'Entry must not be longer than 2000 characters.',
-        })
-        .trim(),
+        }),
 })
 
 const JournalForm = () => {
@@ -138,7 +137,7 @@ const JournalForm = () => {
                             <FormControl>
                                 <Textarea
                                     placeholder="Write whatever comes to your mind"
-                                    className="resize-none lg:h-64 bg-transparent border-none outline-none "
+                                    className="resize-none lg:h-64 bg-transparent border-none outline-none"
                                     {...field}
                                 />
                             </FormControl>

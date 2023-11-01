@@ -118,6 +118,15 @@ input[type='number'] {
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
         }
+
+        .textarea-ring {
+            box-shadow: var(--tw-ring-inset) 0 0 0
+                calc(1px + var(--tw-ring-offset-width)) #d4d4d4;
+        }
+
+        .textarea-full-height {
+            height: 100% !important;
+        }
     }
 }
 
