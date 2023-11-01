@@ -127,6 +127,10 @@ input[type='number'] {
         .textarea-full-height {
             height: 100% !important;
         }
+
+        .disabled-textarea:disabled {
+            cursor: default !important;
+        }
     }
 }
 

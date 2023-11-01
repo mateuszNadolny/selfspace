@@ -8,8 +8,9 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    Textarea,
 } from '@nextui-org/react'
+import { Textarea } from '@/components/ui/textarea'
+
 import { Button } from '@/components/ui/button'
 
 import { EntryModalProps } from '@/lib/types'
@@ -39,37 +40,42 @@ const EntryModal = ({
                 backdrop: 'backdrop-opacity-99 backdrop-blur-md',
             }}
         >
-            <ModalContent>
+            <ModalContent className="h-full">
                 {(onClose) => (
                     <>
-                        <ModalHeader className="flex flex-col gap-1 text-xl text-[#d4d4d4]">
-                            {title}
-                        </ModalHeader>
-                        <ModalBody className="no-scrollbar h-full">
+                        <ModalHeader
+                            className="h=[20px] text-xl text-[#d4d4d4] mb-0 pb-0 cursor-default disabled-textarea"
+                            onDoubleClick={() => {
+                                setIsEditing(true)
+                            }}
+                            onBlur={() => {
+                                setIsEditing(false)
+                            }}
+                        >
                             <Textarea
-                                size="lg"
-                                cacheMeasurements={true}
-                                minRows={2}
-                                className="custom-textarea"
-                                isReadOnly={!isEditing}
-                                defaultValue={body}
-                                onDoubleClick={() => {
-                                    setIsEditing(true)
-                                }}
+                                className="h-[40px] min-h-[30px] no-scrollbar resize-none bg-[#191919] text-[#d4d4d4] text-lg cursor-default disabled-textarea"
+                                disabled={!isEditing}
+                                defaultValue={title}
                                 onTouchMove={() => {
                                     setIsEditing(true)
                                 }}
-                                onBlur={() => {
-                                    setIsEditing(false)
-                                }}
-                                classNames={{
-                                    base: 'textarea-full-height',
-                                    input: `no-scrollbar rounded-md p-2 textarea-full-height ${
-                                        isEditing
-                                            ? 'text-[#ffffff] textarea-ring'
-                                            : 'text-[#d4d4d4]'
-                                    }`,
-                                    inputWrapper: 'textarea-full-height',
+                            />
+                        </ModalHeader>
+                        <ModalBody
+                            className="no-scrollbar h-full disabled-textarea"
+                            onDoubleClick={() => {
+                                setIsEditing(true)
+                            }}
+                            onBlur={() => {
+                                setIsEditing(false)
+                            }}
+                        >
+                            <Textarea
+                                className="custom-textarea h-full no-scrollbar resize-none bg-[#191919] text-[#d4d4d4] text-lg disabled-textarea"
+                                disabled={!isEditing}
+                                defaultValue={body}
+                                onTouchMove={() => {
+                                    setIsEditing(true)
                                 }}
                             />
                         </ModalBody>
