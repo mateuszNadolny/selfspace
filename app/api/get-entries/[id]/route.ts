@@ -3,19 +3,24 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function GET(request: NextRequest) {
+export async function GET(
+    request: NextRequest,
+    { params }: { params: { id: string } }
+) {
     try {
-        const url = new URL(request.url)
+        const { id } = params
 
-        const userId = url.searchParams.get('userId')
+        if (!id) {
+            throw new Error('Could not delete this entry')
+        }
 
-        if (!userId) {
+        if (!id) {
             throw new Error('User id is invalid')
         }
 
         const entries = await prisma.post.findMany({
             where: {
-                userId: userId,
+                userId: id,
             },
         })
 
