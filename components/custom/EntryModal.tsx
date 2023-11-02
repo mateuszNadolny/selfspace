@@ -25,6 +25,7 @@ import {
 import { Button } from '@/components/ui/button'
 
 import { EntryModalProps } from '@/lib/types'
+import { error } from 'console'
 
 const FormSchema = z.object({
     title: z
@@ -45,25 +46,26 @@ const FormSchema = z.object({
 
 const EntryModal = ({
     id,
-    title,
-    body,
     isOpenModal,
     setIsOpenModal,
+    entryTitle,
+    entryBody,
+    setEntryTitle,
+    setEntryBody,
 }: EntryModalProps) => {
     const [isEditing, setIsEditing] = useState(false)
     const [isUpdating, setIsUpdating] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
-    const trigger = useForm()
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
-            title: title,
-            entry: body,
+            title: entryTitle,
+            entry: entryBody,
         },
         values: {
-            title: title,
-            entry: body,
+            title: entryTitle,
+            entry: entryBody,
         },
         mode: 'onSubmit',
     })
@@ -72,7 +74,7 @@ const EntryModal = ({
         console.log('submitting')
         const { title, entry } = data
 
-        if (title.length === 0 || entry.length === 0) {
+        if (title.trim().length === 0 || entry.trim().length === 0) {
             setErrorMessage('Title and entry are required')
             return
         } else {
@@ -80,6 +82,7 @@ const EntryModal = ({
         }
 
         setIsUpdating(true)
+        setErrorMessage('')
 
         const response = await fetch(`api/update-entry?id=${id}`, {
             method: 'PATCH',
@@ -91,9 +94,14 @@ const EntryModal = ({
 
         if (response.ok) {
             setIsUpdating(false)
+            setErrorMessage('')
             setIsOpenModal(false)
+            setEntryTitle(title)
+            setEntryBody(entry)
+            form.reset()
         } else {
             setIsUpdating(false)
+            setErrorMessage('')
         }
     }
 
@@ -103,6 +111,8 @@ const EntryModal = ({
                 isOpen={isOpenModal}
                 onOpenChange={() => {
                     setIsOpenModal(!isOpenModal)
+                    form.reset()
+                    setErrorMessage('')
                 }}
                 onClose={() => {
                     setIsEditing(false)
@@ -152,60 +162,60 @@ const EntryModal = ({
                                                     <FormControl>
                                                         <Textarea
                                                             {...field}
-                                                            className="custom-textarea h-full no-scrollbar resize-none bg-[#191919] text-[#d4d4d4] text-lg disabled-textarea"
+                                                            className="custom-textarea h-full no-scrollbar resize-none bg-[#191919] text-[#d4d4d4] text-lg disabled-textarea dsiabled:outline-none enabled:outline-[#d4d4d4] enabled:hover:outline-[#d4d4d4]"
                                                         />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
                                         />
+                                        {errorMessage.length > 1 && (
+                                            <p className="text-red-500">
+                                                {errorMessage}
+                                            </p>
+                                        )}
                                     </ModalBody>
-                                    <ModalFooter className="w-full flex justify-between">
-                                        <small className="text-slate-600">
-                                            Double click to edit
-                                        </small>
-                                        <div className="flex gap-3">
-                                            <Button
-                                                type="button"
-                                                variant="outline"
-                                                onClick={() => {
-                                                    form.reset()
-                                                    setIsEditing(!isEditing)
-                                                }}
-                                                className="bg-[#191919] text-[#d4d4d4]"
-                                            >
-                                                Edit
-                                            </Button>
-                                            <Button
-                                                type="reset"
-                                                variant="outline"
-                                                disabled={
-                                                    isUpdating ||
-                                                    !isEditing ||
-                                                    !form.formState.isDirty
-                                                }
-                                                onClick={() => {
-                                                    form.reset()
-                                                    setIsEditing(false)
-                                                }}
-                                                className="bg-[#191919] text-[#d4d4d4]"
-                                            >
-                                                Undo
-                                            </Button>
+                                    <ModalFooter className="w-full flex justify-end gap-4">
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={() => {
+                                                form.reset()
+                                                setIsEditing(!isEditing)
+                                            }}
+                                            className="bg-[#191919] text-[#d4d4d4]"
+                                        >
+                                            Edit
+                                        </Button>
+                                        <Button
+                                            type="reset"
+                                            variant="outline"
+                                            disabled={
+                                                isUpdating ||
+                                                !isEditing ||
+                                                !form.formState.isDirty
+                                            }
+                                            onClick={() => {
+                                                form.reset()
+                                                setIsEditing(false)
+                                            }}
+                                            className="bg-[#191919] text-[#d4d4d4]"
+                                        >
+                                            Undo
+                                        </Button>
 
-                                            <Button
-                                                type="submit"
-                                                disabled={
-                                                    isUpdating ||
-                                                    !isEditing ||
-                                                    !form.formState.isDirty
-                                                }
-                                                variant="ghost"
-                                                className="bg-[#d4d4d4] text-[#191919]"
-                                            >
-                                                Save
-                                            </Button>
-                                        </div>
+                                        <Button
+                                            type="submit"
+                                            disabled={
+                                                isUpdating ||
+                                                !isEditing ||
+                                                !form.formState.isDirty
+                                            }
+                                            variant="ghost"
+                                            className="bg-[#d4d4d4] text-[#191919]"
+                                        >
+                                            Save
+                                        </Button>
                                     </ModalFooter>
                                 </form>
                             </Form>

@@ -63,8 +63,11 @@ export interface EntryCardProps extends EntryInterface {
 
 export interface EntryModalProps {
     id: string
-    title: string
-    body: string
+
     isOpenModal: boolean
     setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+    entryTitle: string
+    entryBody: string
+    setEntryTitle: React.Dispatch<React.SetStateAction<string>>
+    setEntryBody: React.Dispatch<React.SetStateAction<string>>
 }

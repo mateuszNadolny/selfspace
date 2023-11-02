@@ -44,19 +44,21 @@ const EntryCard = ({
 }: EntryCardProps) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+    const [entryTitle, setEntryTitle] = useState(title)
+    const [entryBody, setEntryBody] = useState(body)
 
     return (
         <>
-            <Card className=" w-full h-[155px] max-h-[155px] my-2 font-sans bg-slate-200 outline-none z-5">
+            <Card className=" w-full h-[160px] max-h-[160px] my-2 font-sans bg-slate-200 outline-none z-5">
                 <CardHeader className="pb-1">
-                    <CardTitle>{title}</CardTitle>
+                    <CardTitle>{entryTitle}</CardTitle>
                     <CardDescription className="text-xs lg:text-sm p-0 m-0">
                         {formatTimestamp(createdAt)}
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="max-h-[54px] h-[54px] text-ellipsis overflow-hidden">
                     <p className="text-sm overflow-hidden">
-                        {createSummaryText(body)}
+                        {createSummaryText(entryBody)}
                     </p>
                 </CardContent>
                 <CardFooter className="flex flex-col justify-end relative">
@@ -115,7 +117,7 @@ const EntryCard = ({
                                 <p>
                                     Are you sure you want to delete
                                     <span className="font-bold">
-                                        {` "${title}" `}
+                                        {` "${entryBody}" `}
                                     </span>
                                     entry? This action cannot be reverted.
                                 </p>
@@ -141,8 +143,10 @@ const EntryCard = ({
                 isOpenModal={isOpenModal}
                 setIsOpenModal={setIsOpenModal}
                 id={id}
-                title={title}
-                body={body}
+                entryTitle={entryTitle}
+                entryBody={entryBody}
+                setEntryTitle={setEntryTitle}
+                setEntryBody={setEntryBody}
             />
         </>
     )
