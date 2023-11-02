@@ -95,7 +95,6 @@ const EntryModal = ({
         if (response.ok) {
             setIsUpdating(false)
             setErrorMessage('')
-            setIsOpenModal(false)
             setEntryTitle(title)
             setEntryBody(entry)
             form.reset()

@@ -27,8 +27,6 @@ export async function PATCH(
             },
         })
 
-        console.log('edited post: ', title)
-
         return NextResponse.json(post, { status: 200 })
     } catch (error) {
         console.error('Error in POST /api/update-entry:', error)
