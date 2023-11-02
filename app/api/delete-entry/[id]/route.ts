@@ -3,11 +3,12 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function DELETE(request: NextRequest) {
+export async function DELETE(
+    request: NextRequest,
+    { params }: { params: { id: string } }
+) {
     try {
-        const url = new URL(request.url)
-
-        const id = url.searchParams.get('id')
+        const { id } = params
 
         if (!id) {
             throw new Error('Could not delete this entry')

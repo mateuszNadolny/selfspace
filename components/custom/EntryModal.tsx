@@ -84,7 +84,7 @@ const EntryModal = ({
         setIsUpdating(true)
         setErrorMessage('')
 
-        const response = await fetch(`api/update-entry?id=${id}`, {
+        const response = await fetch(`api/update-entry/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

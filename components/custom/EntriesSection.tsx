@@ -49,7 +49,7 @@ const EntriesSection = () => {
 
     async function handleDelete(id: string) {
         try {
-            const response = await fetch(`/api/delete-entry?id=${id}`, {
+            const response = await fetch(`/api/delete-entry/${id}`, {
                 method: 'DELETE',
             })
             if (response.ok) {
