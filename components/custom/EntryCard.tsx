@@ -4,8 +4,6 @@ import { useState } from 'react'
 
 import Image from 'next/image'
 
-import { motion } from 'framer-motion'
-
 import {
     Modal,
     ModalContent,
@@ -145,7 +143,6 @@ const EntryCard = ({
                 id={id}
                 title={title}
                 body={body}
-                handleDelete={handleDelete}
             />
         </>
     )
