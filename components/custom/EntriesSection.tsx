@@ -33,7 +33,6 @@ const EntriesSection = () => {
             if (!userId) return
             const response = await fetch(`/api/get-entries?userId=${userId}`)
             const data = await response.json()
-            console.log(data)
             setEntries(data)
             setCurrentEntries(data.slice(0, entriesPerPage))
             setIsLoading(false)
