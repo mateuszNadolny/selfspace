@@ -125,6 +125,7 @@ const EntryModal = ({
                 classNames={{
                     body: 'py-6',
                     base: 'bg-[#191919]',
+                    closeButton: 'text-[#d4d4d4] fill-current',
                     backdrop:
                         'backdrop-opacity-99 backdrop-blur-md  no-scrollbar',
                 }}
@@ -133,7 +134,10 @@ const EntryModal = ({
                     {(onClose) => (
                         <>
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)}>
+                                <form
+                                    onSubmit={form.handleSubmit(onSubmit)}
+                                    className="h-[75%] lg:h-4/5"
+                                >
                                     <ModalHeader className="h=[20px] text-xl text-[#d4d4d4] mb-0 pb-0 cursor-default disabled-textarea">
                                         <FormField
                                             control={form.control}
