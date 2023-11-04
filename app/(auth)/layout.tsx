@@ -2,7 +2,7 @@
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="flex flex-col items-center justify-center h-screen w-full bg-[#253334] font-sans">
+        <div className="flex flex-col items-center justify-center h-screen w-full bg-gradient-to-b from-startGradient from-1% to-endGradient to-95% font-sans">
             {children}
             <div className="text-slate-300 mt-3 text-center text-sm lg:text-xs">
                 <h2 className="text-center">
