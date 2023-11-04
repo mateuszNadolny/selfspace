@@ -29,11 +29,13 @@ import {
 import { FocusFormProps } from '@/lib/types'
 
 const formSchema = z.object({
-    duration: z.string().regex(new RegExp('^(?:10|[1-5][0-9]|70)$'), {
-        message: 'Session should take between 10 and 70 minutes',
-    }),
+    duration: z
+        .string()
+        .regex(new RegExp('^(?:10|[1-4][0-9]|50|51|52|53|54|55)$'), {
+            message: 'Session should take between 10 and 55 minutes',
+        }),
     break: z.string().regex(new RegExp('^(?:[1-5])$'), {
-        message: 'Short break should take between 1 and 5 minutes',
+        message: 'Break should take between 1 and 5 minutes',
     }),
 })
 
@@ -61,7 +63,7 @@ const FocusForm = ({
     return (
         <div className="w-full relative z-10 flex justify-center">
             <Popover open={formOpen} onOpenChange={setFormOpen}>
-                <PopoverTrigger className="text-[#d4d4d4] self-center mt-4">
+                <PopoverTrigger className="self-center mt-4">
                     <motion.div
                         className="w-full flex justify-center"
                         whileHover={
@@ -92,7 +94,7 @@ const FocusForm = ({
                         />
                     </motion.div>
                 </PopoverTrigger>
-                <PopoverContent className="bg-[#191919]">
+                <PopoverContent className="drop-shadow-xl">
                     <Form {...form}>
                         <form
                             onSubmit={form.handleSubmit(onSubmit)}
@@ -103,14 +105,14 @@ const FocusForm = ({
                                 name="duration"
                                 render={({ field }) => (
                                     <FormItem className=" w-[250px] animate-slide-down text-center">
-                                        <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
+                                        <FormLabel className="mb-2 hover:border-slate-600 text-xl font-alegreya mt-4">
                                             Focus
                                         </FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
                                                 {...field}
-                                                className="border-none outline-none focus:outline-slate-600 hover:outline-slate-600 bg-transparent text-xl lg:text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                                className="focus:outline-slate-600 hover:outline-slate-600 bg-transparent text-xl lg:text-3xl font-alegreya  invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
                                                 onKeyPress={(
                                                     e: React.KeyboardEvent<HTMLInputElement>
                                                 ) => {
@@ -136,14 +138,14 @@ const FocusForm = ({
                                 name="break"
                                 render={({ field }) => (
                                     <FormItem className=" w-[250px] animate-slide-down  text-center">
-                                        <FormLabel className="mb-2 hover:border-slate-600 text-xl text-slate-500 font-alegreya mt-4">
+                                        <FormLabel className="mb-2 hover:border-slate-600 text-xl font-alegreya mt-4">
                                             Break
                                         </FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
                                                 {...field}
-                                                className="border-none outline-none focus:outline-slate-600 hover:outline-slate-600 bg-transparent text-xl lg:text-3xl font-alegreya text-slate-50 invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
+                                                className="outline-slate-500 focus:outline-slate-600 hover:outline-slate-600 bg-transparent text-xl lg:text-3xl font-alegreya  invalid:border-pink-500 invalid:outline-pink-500 invalid:text-pink-600 animate-slide-down"
                                                 onKeyPress={(
                                                     e: React.KeyboardEvent<HTMLInputElement>
                                                 ) => {
@@ -171,7 +173,7 @@ const FocusForm = ({
                             >
                                 <Button
                                     type="submit"
-                                    className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7"
+                                    className="text-xl hover:text-slate-50 p-7"
                                 >
                                     Save
                                 </Button>
