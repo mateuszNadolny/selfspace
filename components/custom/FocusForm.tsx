@@ -61,7 +61,7 @@ const FocusForm = ({
     return (
         <div className="w-full relative z-10 flex justify-center">
             <Popover open={formOpen} onOpenChange={setFormOpen}>
-                <PopoverTrigger className="text-slate-50 self-center mt-4">
+                <PopoverTrigger className="text-[#d4d4d4] self-center mt-4">
                     <motion.div
                         className="w-full flex justify-center"
                         whileHover={
@@ -92,7 +92,7 @@ const FocusForm = ({
                         />
                     </motion.div>
                 </PopoverTrigger>
-                <PopoverContent className="bg-gradient-to-b from-startGradient from-1% to-endGradient to-95%">
+                <PopoverContent className="bg-[#191919]">
                     <Form {...form}>
                         <form
                             onSubmit={form.handleSubmit(onSubmit)}

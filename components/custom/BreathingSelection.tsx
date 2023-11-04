@@ -13,7 +13,6 @@ import { Button } from '@/components/ui/button'
 
 import { BreathingSelectionProps } from '@/lib/types'
 const BreathingSelection = ({
-    breathingType,
     setBreathingType,
     isSession,
     setIsSession,
@@ -49,7 +48,7 @@ const BreathingSelection = ({
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="box">
-                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden">
+                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden no-scrollbar">
                             <CardHeader>
                                 <CardTitle>Box breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
@@ -59,7 +58,7 @@ const BreathingSelection = ({
                         </Card>
                     </TabsContent>
                     <TabsContent value="calm">
-                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden">
+                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden no-scrollbar">
                             <CardHeader>
                                 <CardTitle>4-7-8 breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
@@ -69,7 +68,7 @@ const BreathingSelection = ({
                         </Card>
                     </TabsContent>
                     <TabsContent value="awake">
-                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden">
+                        <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden no-scrollbar">
                             <CardHeader>
                                 <CardTitle>Awake breathing</CardTitle>
                                 <CardDescription className="w-auto text-md">
