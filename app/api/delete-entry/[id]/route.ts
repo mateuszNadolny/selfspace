@@ -13,13 +13,20 @@ export async function DELETE(
             throw new Error('Could not delete this entry')
         }
 
-        const entries = await prisma.post.delete({
+        const deletedEntry = await prisma.post.delete({
             where: {
                 id: id,
             },
         })
 
-        return Response.json(entries, { status: 200 })
+        const json = JSON.stringify(deletedEntry)
+
+        return new Response(json, {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
     } catch (error) {
         console.error('Error in POST /api/get-entries:', error)
         console.log(error)
