@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from 'next/server'
+import { NextRequest } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -24,10 +24,10 @@ export async function GET(
             },
         })
 
-        return NextResponse.json(entries, { status: 200 })
+        return Response.json(entries, { status: 200 })
     } catch (error) {
         console.error('Error in POST /api/get-entries:', error)
         console.log(error)
-        return NextResponse.error
+        return Response.error
     }
 }

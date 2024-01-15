@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from 'next/server'
+import { NextRequest } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -27,10 +27,10 @@ export async function PATCH(
             },
         })
 
-        return NextResponse.json(post, { status: 200 })
+        return Response.json(post, { status: 200 })
     } catch (error) {
         console.error('Error in POST /api/update-entry:', error)
         console.log(error)
-        return NextResponse.error
+        return Response.error
     }
 }
