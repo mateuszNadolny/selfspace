@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 
 import Link from 'next/link'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import { Pagination } from '@nextui-org/react'
 
@@ -32,6 +32,7 @@ const EntriesSection = () => {
         const getEntries = async () => {
             if (!userId) return
             const response = await fetch(`/api/get-entries/${userId}`)
+            console.log(response)
             const data = await response.json()
             setEntries(data)
             setCurrentEntries(data.slice(0, entriesPerPage))
@@ -89,16 +90,6 @@ const EntriesSection = () => {
                             <EntryCard {...entry} handleDelete={handleDelete} />
                         </motion.div>
                     ))}
-
-                {/* <AnimatePresence>
-                    {selectedId && (
-                    //     <motion.div layoutId={selectedId}>
-                    //     <motion.h5>{entries.selectedId.title}</motion.h5>
-                    //     <motion.h2>{item.title}</motion.h2>
-                    //     <motion.button onClick={() => setSelectedId(null)} />
-                    //   </motion.div>
-                    )}
-                </AnimatePresence> */}
             </div>
             {!isLoading && entries.length > 3 && (
                 <Pagination
