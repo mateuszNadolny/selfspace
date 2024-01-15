@@ -16,10 +16,10 @@ export async function POST(request: Request) {
             },
         })
 
-        return NextResponse.json(post, { status: 201 })
+        return Response.json(post, { status: 201 })
     } catch (error) {
         console.error('Error in POST /api/create-entry:', error)
         console.log(error)
-        return NextResponse.error
+        return Response.error
     }
 }
