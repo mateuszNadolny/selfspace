@@ -23,14 +23,7 @@ export async function GET(
             },
         })
 
-        const json = JSON.stringify(entries)
-
-        return new Response(json, {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+        return Response.json(entries, { status: 200 })
     } catch (error) {
         console.error('Error in POST /api/get-entries:', error)
         console.log(error)

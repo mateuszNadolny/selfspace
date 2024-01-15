@@ -26,14 +26,7 @@ export async function PATCH(
             },
         })
 
-        const json = JSON.stringify(post)
-
-        return new Response(json, {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+        return Response.json(post, { status: 200 })
     } catch (error) {
         console.error('Error in POST /api/update-entry:', error)
         console.log(error)
