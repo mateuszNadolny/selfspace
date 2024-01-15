@@ -15,7 +15,7 @@ export async function POST(request: Request) {
             },
         })
 
-        return Response.json({ status: 201 })
+        return Response
     } catch (error) {
         console.error('Error in POST /api/create-entry:', error)
         console.log(error)

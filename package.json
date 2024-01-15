@@ -33,6 +33,7 @@
         "clsx": "^2.0.0",
         "eslint": "8.47.0",
         "eslint-config-next": "^14.0.4",
+        "eslint-plugin-testing-library": "^6.2.0",
         "framer-motion": "^10.16.4",
         "howler": "^2.2.3",
         "lucide-react": "^0.263.1",
