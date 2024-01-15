@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export default async function handler(req, res) {
+export async function POST(request: Request) {
     try {
-        const body = await req.body
+        const body = await request.json()
         const { title, entry, userId } = body
 
         const post = await prisma.post.create({
@@ -15,10 +15,10 @@ export default async function handler(req, res) {
             },
         })
 
-        return res.json(post) // Use res.json() instead of Response.json()
+        return Response.json(post, { status: 200 })
     } catch (error) {
         console.error('Error in POST /api/create-entry:', error)
         console.log(error)
-        return res.status(500).json({ error: 'Internal Server Error' })
+        return Response.error
     }
 }
