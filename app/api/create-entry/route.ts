@@ -15,13 +15,10 @@ export async function POST(request: Request) {
             },
         })
 
-        return new Response(JSON.stringify(post), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        })
+        return Response.json(post, { status: 201 })
     } catch (error) {
         console.error('Error in POST /api/create-entry:', error)
         console.log(error)
-        return new Response('Internal Server Error', { status: 500 })
+        return Response.error()
     }
 }
