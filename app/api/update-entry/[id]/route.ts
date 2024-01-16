@@ -26,13 +26,10 @@ export async function PATCH(
             },
         })
 
-        return new Response(JSON.stringify(post), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        })
+        return Response.json(post, { status: 201 })
     } catch (error) {
         console.error('Error in POST /api/update-entry:', error)
         console.log(error)
-        return new Response('Internal Server Error', { status: 500 })
+        return Response.error()
     }
 }

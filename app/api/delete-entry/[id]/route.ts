@@ -19,13 +19,10 @@ export async function DELETE(
             },
         })
 
-        return new Response(JSON.stringify(deletedEntry), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        })
+        return Response.json(deletedEntry, { status: 201 })
     } catch (error) {
         console.error('Error in POST /api/get-entries:', error)
         console.log(error)
-        return new Response('Internal Server Error', { status: 500 })
+        return Response.error()
     }
 }
