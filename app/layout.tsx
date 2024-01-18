@@ -1,4 +1,3 @@
-// app/layout.tsx
 import './globals.css'
 import { Alegreya, Alegreya_Sans } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
