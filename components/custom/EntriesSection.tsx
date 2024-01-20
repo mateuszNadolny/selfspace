@@ -13,6 +13,7 @@ import { DotWave } from '@uiball/loaders'
 import { useUser } from '@clerk/nextjs'
 
 import EntryCard from './EntryCard'
+import NonLogged from './NonLogged'
 
 import { EntryInterface } from '@/lib/types'
 
@@ -24,7 +25,7 @@ const EntriesSection = () => {
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [selectedId, setSelectedId] = useState<string | null>(null)
     const [isLoading, setIsLoading] = useState<boolean>(true)
-    const { user } = useUser()
+    const { user, isSignedIn } = useUser()
     const userId = user?.id
 
     useEffect(() => {
@@ -62,6 +63,10 @@ const EntriesSection = () => {
         } catch (error) {
             console.error(error)
         }
+    }
+
+    if (!isSignedIn) {
+        return <NonLogged />
     }
 
     return (

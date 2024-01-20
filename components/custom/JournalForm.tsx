@@ -12,6 +12,8 @@ import { useUser } from '@clerk/nextjs'
 
 import { DotWave } from '@uiball/loaders'
 
+import NonLogged from './NonLogged'
+
 import { Button } from '@/components/ui/button'
 import {
     Form,
@@ -47,8 +49,12 @@ const JournalForm = () => {
     const [isPosting, setIsPosting] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
     const router = useRouter()
-    const { user } = useUser()
+    const { user, isSignedIn } = useUser()
     const userId = user?.id
+
+    if (!isSignedIn) {
+        return <NonLogged />
+    }
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
