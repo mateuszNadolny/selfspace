@@ -18,6 +18,7 @@ const pathVariants = {
 const EntriesSVG = ({ width, height, opacity }: SVGComponentProps) => {
     return (
         <motion.svg
+            data-testid="animated-svg"
             width={`${width}px`}
             height={`${height}px`}
             viewBox="0 0 1024 1024"

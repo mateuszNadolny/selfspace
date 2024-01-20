@@ -27,8 +27,8 @@ import {
 import { MeditationFormProps } from '@/lib/types'
 
 const formSchema = z.object({
-    duration: z.string().regex(new RegExp('^(?:[1-9]|[1-4][0-9])$'), {
-        message: 'Meditation should take between 1 and 40 minutes',
+    duration: z.string().regex(new RegExp('^(?:[1-9]|[1-4][0-9]|50)$'), {
+        message: 'Meditation should take between 1 and 50 minutes',
     }),
     sound: z.string(),
 })
@@ -36,7 +36,6 @@ const formSchema = z.object({
 const MeditationForm = ({
     isSession,
     setIsSession,
-    sessionData,
     setSessionData,
 }: MeditationFormProps) => {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -97,7 +96,7 @@ const MeditationForm = ({
                                         }}
                                     />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage data-testid="form-message" />
                             </FormItem>
                         )}
                     />
@@ -105,7 +104,7 @@ const MeditationForm = ({
                         control={form.control}
                         name="sound"
                         render={({ field }) => (
-                            <FormItem className="w-[250px] animate-slide-down ease-in-out">
+                            <FormItem className="w-[250px] animate-slide-down ease-in-out mb-2">
                                 <FormLabel className="mb-2 hover:outline-slate-600  text-xl text-slate-500 font-alegreya ">
                                     Sound selection
                                 </FormLabel>
@@ -145,17 +144,12 @@ const MeditationForm = ({
                             </FormItem>
                         )}
                     />
-                    <motion.div
-                        whileTap={{ scale: 0.9 }}
-                        className="font-alegreya pt-[2rem] lg:pt-[6rem] animate-slide-down"
+                    <Button
+                        type="submit"
+                        className="font-alegreya text-xl bg-slate-50 text-black hover:text-slate-50 p-7 animate-slide-down"
                     >
-                        <Button
-                            type="submit"
-                            className="text-xl bg-slate-50 text-black hover:text-slate-50 p-7 animate-slide-down"
-                        >
-                            Meditate
-                        </Button>
-                    </motion.div>
+                        Meditate
+                    </Button>
                 </form>
             </Form>
         </motion.div>

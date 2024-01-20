@@ -18,6 +18,7 @@ const pathVariants = {
 const FocusSVG = ({ width, height, opacity }: SVGComponentProps) => {
     return (
         <motion.svg
+            data-testid="animated-svg"
             viewBox="0 0 64 64"
             width={`${width}px`}
             height={`${height}px`}

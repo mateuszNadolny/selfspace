@@ -15,7 +15,7 @@ const MeditationSection = () => {
         sound: 'none',
     })
     return (
-        <div>
+        <div data-testid="meditation-section">
             <MeditationHeader isSession={isSession} />
             <MeditationForm
                 isSession={isSession}

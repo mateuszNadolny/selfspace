@@ -65,6 +65,7 @@ const FocusForm = ({
             <Popover open={formOpen} onOpenChange={setFormOpen}>
                 <PopoverTrigger className="self-center mt-4">
                     <motion.div
+                        data-testid="settings-button"
                         className="w-full flex justify-center"
                         whileHover={
                             !isSession
