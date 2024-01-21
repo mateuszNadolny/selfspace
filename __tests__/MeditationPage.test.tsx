@@ -2,6 +2,14 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import MeditationPage from '@/app/(dashboard)/(routes)/meditation/page'
 import MeditationForm from '@/components/custom/MeditationForm'
+import MeditationSession from '@/components/custom/MeditationSession'
+
+const mockSessionData = {
+    duration: '10',
+    sound: 'none',
+}
+const setIsSession = jest.fn()
+const setSessionData = jest.fn()
 
 describe('MeditationPage', () => {
     describe('Rendering', () => {
@@ -29,15 +37,12 @@ describe('MeditationPage', () => {
     })
 
     describe('MeditationForm behavior', () => {
-        const setIsSession = jest.fn()
-        const setSessionData = jest.fn()
-
         it('renders form without crashing', () => {
             render(
                 <MeditationForm
                     setSessionData={setSessionData}
                     setIsSession={setIsSession}
-                    sessionData={{ duration: '10', sound: 'none' }}
+                    sessionData={mockSessionData}
                     isSession={false}
                 />
             )
@@ -48,7 +53,7 @@ describe('MeditationPage', () => {
                 <MeditationForm
                     setSessionData={setSessionData}
                     setIsSession={setIsSession}
-                    sessionData={{ duration: '10', sound: 'none' }}
+                    sessionData={mockSessionData}
                     isSession={false}
                 />
             )
@@ -73,6 +78,36 @@ describe('MeditationPage', () => {
             const soundSelect = screen.getByDisplayValue('None')
             await userEvent.selectOptions(soundSelect, 'rain')
             expect(soundSelect).toHaveValue('rain')
+        })
+    })
+
+    describe('MeditationSession behavior', () => {
+        it('renders when isSession is set to true', () => {
+            render(
+                <MeditationSession
+                    setSessionData={setSessionData}
+                    setIsSession={setIsSession}
+                    sessionData={mockSessionData}
+                    isSession={true}
+                />
+            )
+
+            const sessionBtn = screen.getByRole('button', { name: 'Stop' })
+            expect(sessionBtn).toBeInTheDocument()
+        })
+
+        it('does not render when isSession is set to true', () => {
+            render(
+                <MeditationSession
+                    setSessionData={setSessionData}
+                    setIsSession={setIsSession}
+                    sessionData={mockSessionData}
+                    isSession={false}
+                />
+            )
+
+            const sessionBtn = screen.queryByRole('button', { name: 'Stop' })
+            expect(sessionBtn).not.toBeInTheDocument()
         })
     })
 })
