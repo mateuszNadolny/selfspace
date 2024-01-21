@@ -8,8 +8,8 @@ const mockSessionData = {
     duration: '10',
     sound: 'none',
 }
-const setIsSession = jest.fn()
-const setSessionData = jest.fn()
+const mockSetIsSession = jest.fn()
+const mockSetSessionData = jest.fn()
 
 describe('MeditationPage', () => {
     describe('Rendering', () => {
@@ -40,8 +40,8 @@ describe('MeditationPage', () => {
         it('renders form without crashing', () => {
             render(
                 <MeditationForm
-                    setSessionData={setSessionData}
-                    setIsSession={setIsSession}
+                    setSessionData={mockSetSessionData}
+                    setIsSession={mockSetIsSession}
                     sessionData={mockSessionData}
                     isSession={false}
                 />
@@ -51,8 +51,8 @@ describe('MeditationPage', () => {
         it('validates form fields', async () => {
             render(
                 <MeditationForm
-                    setSessionData={setSessionData}
-                    setIsSession={setIsSession}
+                    setSessionData={mockSetSessionData}
+                    setIsSession={mockSetIsSession}
                     sessionData={mockSessionData}
                     isSession={false}
                 />
@@ -85,8 +85,8 @@ describe('MeditationPage', () => {
         it('renders when isSession is set to true', () => {
             render(
                 <MeditationSession
-                    setSessionData={setSessionData}
-                    setIsSession={setIsSession}
+                    setSessionData={mockSetSessionData}
+                    setIsSession={mockSetIsSession}
                     sessionData={mockSessionData}
                     isSession={true}
                 />
@@ -99,8 +99,8 @@ describe('MeditationPage', () => {
         it('does not render when isSession is set to true', () => {
             render(
                 <MeditationSession
-                    setSessionData={setSessionData}
-                    setIsSession={setIsSession}
+                    setSessionData={mockSetSessionData}
+                    setIsSession={mockSetIsSession}
                     sessionData={mockSessionData}
                     isSession={false}
                 />
