@@ -3,13 +3,6 @@ import userEvent from '@testing-library/user-event'
 import JournalPage from '@/app/(dashboard)/(routes)/journal/page'
 import JournalForm from '@/components/custom/JournalForm'
 
-const mockSessionData = {
-    duration: '10',
-    sound: 'none',
-}
-const mockSetIsSession = jest.fn()
-const mockSetSessionData = jest.fn()
-
 // Mock useRouter:
 jest.mock('next/navigation', () => ({
     useRouter() {
