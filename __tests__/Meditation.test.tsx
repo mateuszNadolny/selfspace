@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import MeditationPage from '@/app/(dashboard)/(routes)/meditation/page'
 import MeditationForm from '@/components/custom/MeditationForm'

@@ -1,8 +1,15 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import FocusPage from '@/app/(dashboard)/(routes)/focus/page'
 import FocusForm from '@/components/custom/FocusForm'
-import { use } from 'react'
+import FocusSession from '@/components/custom/FocusSession'
+
+const mockSessionData = {
+    duration: '25',
+    break: '5',
+}
+const setIsSession = jest.fn()
+const setSessionData = jest.fn()
 
 describe('FocusPage', () => {
     describe('Rendering', () => {
@@ -24,8 +31,6 @@ describe('FocusPage', () => {
     })
 
     describe('FocusForm behavior', () => {
-        const setIsSession = jest.fn()
-        const setSessionData = jest.fn()
         it('renders form without crashing', () => {
             render(
                 <FocusForm
@@ -68,6 +73,36 @@ describe('FocusPage', () => {
             await userEvent.type(durationInput, '30')
             await userEvent.type(breakInput, '5')
             expect(screen.queryByTestId('form-message')).not.toBeInTheDocument()
+        })
+    })
+
+    describe('FocusSession behavior', () => {
+        it('renders when isSession is set to true', () => {
+            render(
+                <FocusSession
+                    setSessionData={setSessionData}
+                    setIsSession={setIsSession}
+                    sessionData={mockSessionData}
+                    isSession={true}
+                />
+            )
+
+            const sessionMessage = screen.getByTestId('pause')
+            expect(sessionMessage).toBeInTheDocument()
+        })
+
+        it('does not render when isSession is set to true', () => {
+            render(
+                <FocusSession
+                    setSessionData={setSessionData}
+                    setIsSession={setIsSession}
+                    sessionData={mockSessionData}
+                    isSession={false}
+                />
+            )
+
+            const sessionMessage = screen.queryByTestId('pause')
+            expect(sessionMessage).not.toBeInTheDocument()
         })
     })
 })

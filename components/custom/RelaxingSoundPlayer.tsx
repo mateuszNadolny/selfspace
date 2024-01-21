@@ -173,6 +173,7 @@ const RelaxingSoundPlayer = () => {
                 <AnimatePresence mode="wait">
                     {!isPlaying ? (
                         <motion.img
+                            data-testid="play"
                             key="play"
                             src="/play.svg"
                             width={50}
@@ -183,6 +184,7 @@ const RelaxingSoundPlayer = () => {
                         />
                     ) : (
                         <motion.img
+                            data-testid="pause"
                             key="pause"
                             src="/pause.svg"
                             width={50}
