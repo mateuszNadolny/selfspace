@@ -69,7 +69,7 @@ const FocusSession = ({
     useEffect(() => {
         const totalDurationInSeconds = isBreak
             ? +sessionData.break * 60
-            : +sessionData.duration * 60 // Make sure this picks the right value based on isBreak
+            : +sessionData.duration * 60
         const remainingTimeInSeconds = minutes * 60 + seconds
         const progressValue =
             (remainingTimeInSeconds / totalDurationInSeconds) * 100
@@ -133,6 +133,7 @@ const FocusSession = ({
                                 />
                             ) : (
                                 <motion.img
+                                    data-testid="pause"
                                     key="pause"
                                     src="/pause.svg"
                                     width={25}

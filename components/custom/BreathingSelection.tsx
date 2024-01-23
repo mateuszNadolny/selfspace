@@ -18,7 +18,10 @@ const BreathingSelection = ({
     setIsSession,
 }: BreathingSelectionProps) => {
     return (
-        <div style={isSession ? { opacity: 0 } : { opacity: 1 }}>
+        <div
+            style={isSession ? { opacity: 0 } : { opacity: 1 }}
+            data-testid="breathing-selection"
+        >
             <div className="flex justify-center w-full relative animate-slide-down">
                 <Tabs
                     defaultValue="box"
@@ -26,6 +29,7 @@ const BreathingSelection = ({
                 >
                     <TabsList className="flex justify-center items-center mb-5">
                         <TabsTrigger
+                            data-testid="box-breathing-btn"
                             value="box"
                             onClick={() => setBreathingType('box')}
                             className="w-full flex justify-center lg:text-xl text-sm break-normal"
@@ -33,6 +37,7 @@ const BreathingSelection = ({
                             Box breathing
                         </TabsTrigger>
                         <TabsTrigger
+                            data-testid="calm-breathing-btn"
                             value="calm"
                             onClick={() => setBreathingType('calm')}
                             className="w-full flex justify-center flex-wrap lg:text-xl text-sm break-normal"
@@ -40,6 +45,7 @@ const BreathingSelection = ({
                             4-7-8 breathing
                         </TabsTrigger>
                         <TabsTrigger
+                            data-testid="awake-breathing-btn"
                             value="awake"
                             onClick={() => setBreathingType('awake')}
                             className="w-full flex justify-center lg:text-xl text-sm break-normal"
@@ -47,7 +53,7 @@ const BreathingSelection = ({
                             Awake breathing
                         </TabsTrigger>
                     </TabsList>
-                    <TabsContent value="box">
+                    <TabsContent value="box" data-testid="box-breathing-desc">
                         <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden no-scrollbar">
                             <CardHeader>
                                 <CardTitle>Box breathing</CardTitle>
@@ -57,7 +63,7 @@ const BreathingSelection = ({
                             </CardHeader>
                         </Card>
                     </TabsContent>
-                    <TabsContent value="calm">
+                    <TabsContent value="calm" data-testid="calm-breathing-desc">
                         <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden no-scrollbar">
                             <CardHeader>
                                 <CardTitle>4-7-8 breathing</CardTitle>
@@ -67,7 +73,10 @@ const BreathingSelection = ({
                             </CardHeader>
                         </Card>
                     </TabsContent>
-                    <TabsContent value="awake">
+                    <TabsContent
+                        value="awake"
+                        data-testid="awake-breathing-desc"
+                    >
                         <Card className="h-[200px] overflow-scroll lg:h-auto lg:overflow-hidden no-scrollbar">
                             <CardHeader>
                                 <CardTitle>Awake breathing</CardTitle>

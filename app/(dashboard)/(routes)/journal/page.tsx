@@ -1,5 +1,3 @@
-'use client'
-
 import JournalForm from '@/components/custom/JournalForm'
 import JournalSVG from '@/components/SVGanimations/JournalSVG'
 

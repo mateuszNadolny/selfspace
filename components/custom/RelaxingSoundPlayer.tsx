@@ -73,7 +73,10 @@ const RelaxingSoundPlayer = () => {
     }, [isPlaying])
 
     return (
-        <div className="flex gap-10 flex-col items-center relative">
+        <div
+            data-testid="sound-player"
+            className="flex gap-10 flex-col items-center relative"
+        >
             <div
                 className="relative w-[80%] md:w-[50%] h-[50px] font-sans text-slate-50 text-3xl flex justify-around mt-6 mb-6"
                 id="carousel"
@@ -170,6 +173,7 @@ const RelaxingSoundPlayer = () => {
                 <AnimatePresence mode="wait">
                     {!isPlaying ? (
                         <motion.img
+                            data-testid="play"
                             key="play"
                             src="/play.svg"
                             width={50}
@@ -180,6 +184,7 @@ const RelaxingSoundPlayer = () => {
                         />
                     ) : (
                         <motion.img
+                            data-testid="pause"
                             key="pause"
                             src="/pause.svg"
                             width={50}

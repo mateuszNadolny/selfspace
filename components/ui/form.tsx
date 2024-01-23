@@ -154,6 +154,7 @@ const FormMessage = React.forwardRef<
 
     return (
         <p
+            data-testid="form-message"
             ref={ref}
             id={formMessageId}
             className={cn(
