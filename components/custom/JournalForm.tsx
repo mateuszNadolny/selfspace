@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useRouter } from 'next/navigation'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,6 +9,10 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 import { useUser } from '@clerk/nextjs'
+
+import { DotWave } from '@uiball/loaders'
+
+import NonLogged from './NonLogged'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -34,15 +40,21 @@ const FormSchema = z.object({
         .min(10, {
             message: 'Entry must be at least 10 characters.',
         })
-        .max(300, {
-            message: 'Entry must not be longer than 300 characters.',
+        .max(2000, {
+            message: 'Entry must not be longer than 2000 characters.',
         }),
 })
 
 const JournalForm = () => {
+    const [isPosting, setIsPosting] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
     const router = useRouter()
-    const { user } = useUser()
+    const { user, isSignedIn } = useUser()
     const userId = user?.id
+
+    if (!isSignedIn) {
+        return <NonLogged />
+    }
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -54,6 +66,15 @@ const JournalForm = () => {
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         const { title, entry } = data
 
+        if (title.length === 0 || entry.length === 0) {
+            setErrorMessage('Title and entry are required')
+            return
+        } else {
+            setErrorMessage('')
+        }
+
+        setIsPosting(true)
+
         const response = await fetch('api/create-entry', {
             method: 'POST',
             headers: {
@@ -64,9 +85,11 @@ const JournalForm = () => {
 
         if (response.ok) {
             form.reset()
+            setIsPosting(false)
+
             toast({
                 title: 'Entry added to journal',
-                duration: 2000,
+                duration: 5000,
                 variant: 'default',
                 description: (
                     <Button onClick={() => router.push('/entries')}>
@@ -75,6 +98,8 @@ const JournalForm = () => {
                 ),
             })
         } else {
+            setIsPosting(false)
+
             toast({
                 title: 'Something went wrong',
                 duration: 2000,
@@ -92,6 +117,7 @@ const JournalForm = () => {
                 <FormField
                     control={form.control}
                     name="title"
+                    disabled={isPosting}
                     render={({ field }) => (
                         <FormItem className="w-4/5 md:w-3/5">
                             <FormLabel className="mb-2 text-xl text-slate-300 text-center">
@@ -111,12 +137,13 @@ const JournalForm = () => {
                 <FormField
                     control={form.control}
                     name="entry"
+                    disabled={isPosting}
                     render={({ field }) => (
                         <FormItem className="w-4/5 md:w-3/5">
                             <FormControl>
                                 <Textarea
                                     placeholder="Write whatever comes to your mind"
-                                    className="resize-none h-80 bg-transparent border-none outline-none "
+                                    className="resize-none lg:h-64 bg-transparent border-none outline-none"
                                     {...field}
                                 />
                             </FormControl>
@@ -125,14 +152,20 @@ const JournalForm = () => {
                         </FormItem>
                     )}
                 />
-                <Toaster />
-                <Button
-                    type="submit"
-                    className="hover:bg-slate-50 hover:text-black animate-slide-down"
-                >
-                    Add entry
-                </Button>
+                {isPosting && <DotWave size={60} speed={1.4} color="gray" />}
+                {errorMessage.length > 0 && (
+                    <small className="text-rose-600	">{errorMessage}</small>
+                )}
+                {!isPosting && (
+                    <Button
+                        type="submit"
+                        className="hover:bg-slate-50 hover:text-black animate-slide-down"
+                    >
+                        Add entry
+                    </Button>
+                )}
             </form>
+            <Toaster />
         </Form>
     )
 }

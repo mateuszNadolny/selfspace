@@ -147,7 +147,7 @@ const MeditationForm = ({
                     />
                     <motion.div
                         whileTap={{ scale: 0.9 }}
-                        className="font-alegreya pt-[6rem] animate-slide-down"
+                        className="font-alegreya pt-[2rem] lg:pt-[6rem] animate-slide-down"
                     >
                         <Button
                             type="submit"

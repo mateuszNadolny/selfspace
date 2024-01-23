@@ -3,18 +3,28 @@
 import { useState } from 'react'
 
 import BreathingSelection from './BreathingSelection'
+import BreathingHeader from './BreathingHeader'
+import BreathingSession from './BreathingSession'
 
 const BreathingSection = () => {
-    const [isBoxBreathing, setIsBoxBreathing] = useState<boolean>(true)
+    const [breathingType, setBreathingType] = useState<string>('box')
     const [isSession, setIsSession] = useState<boolean>(false)
 
     return (
-        <BreathingSelection
-            isBoxBreathing={isBoxBreathing}
-            setIsBoxBreathing={setIsBoxBreathing}
-            isSession={isSession}
-            setIsSession={setIsSession}
-        />
+        <>
+            <BreathingHeader isSession={isSession} />
+            <BreathingSelection
+                breathingType={breathingType}
+                setBreathingType={setBreathingType}
+                isSession={isSession}
+                setIsSession={setIsSession}
+            />
+            <BreathingSession
+                isSession={isSession}
+                setIsSession={setIsSession}
+                breathingType={breathingType}
+            />
+        </>
     )
 }
 

@@ -1,3 +1,5 @@
+'use client'
+
 import ToolCard from './ToolCard'
 import { motion } from 'framer-motion'
 

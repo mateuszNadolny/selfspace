@@ -20,8 +20,9 @@ In today's fast-paced world, maintaining mental health and clarity has never bee
 * **Frontend**: Built with the latest version of [Next.js 13](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/), providing a seamless and efficient user experience.
 * **Backend**: Powered by [Supabase](https://supabase.io/), an open-source Firebase alternative, ensuring real-time, reliable data storage.
 * **Database**: Managed by [Prisma](https://www.prisma.io/), an open-source database toolkit that guarantees performance and security.
-* **UI Components**: Crafted using [Shadcn](https://ui.shadcn.com/), enabling a beautiful and responsive design.
+* **UI Components**: Crafted using [Shadcn](https://ui.shadcn.com/), [NextUI](https://nextui.org/) and [Framer Motion](https://www.framer.com/motion/) enabling a beautiful and responsive design and animations.
 * **Authentication**: Secured with [ClerkAuth](https://clerk.dev/), ensuring user data protection and safe authentication processes.
+* **Forms**: Created with help of [react-hook-form](https://react-hook-form.com/) and [Zod](https://github.com/colinhacks/zod), making sure that the data input is processed safely.
 
 ## Getting Started
 
