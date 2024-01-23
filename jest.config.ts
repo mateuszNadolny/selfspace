@@ -9,11 +9,24 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 const config: Config = {
     coverageProvider: 'v8',
-    testEnvironment: 'jsdom',
+    testEnvironment: 'jest-environment-jsdom',
+    preset: 'ts-jest',
+    verbose: true,
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     // Add more setup options before each test is run
     // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 }
 
+module.exports = {
+    testEnvironmentOptions: {
+        customExportConditions: [''],
+    },
+    transform: {
+        '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    },
+    oduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/src/$1',
+    },
+}
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 export default createJestConfig(config)

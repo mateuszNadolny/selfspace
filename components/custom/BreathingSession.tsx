@@ -142,7 +142,7 @@ const BreathingSession = ({
                                 }}
                             ></motion.div>
                             <div className="flex flex-col items-center absolute bottom-[8vh]">
-                                <p className="text-2xl lg:text-5xl z-20 pt-[5rem] ">
+                                <p className="text-2xl lg:text-5xl text-slate-500 z-20 pt-[5rem] ">
                                     {phases[currentPhase].name}
                                 </p>
                                 <p className="text-slate-500 lg:text-2xl p-2">
