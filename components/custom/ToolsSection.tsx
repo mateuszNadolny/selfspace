@@ -5,20 +5,6 @@ import { motion } from 'framer-motion'
 
 const tools = [
     {
-        title: 'Mood Journal',
-        url: '/mood-journal.svg',
-        href: '/journal',
-        primaryColor: '#051d3d',
-        secondaryColor: 'slate-50',
-    },
-    {
-        title: 'Journal Entries',
-        url: '/journal-entries.svg',
-        href: '/entries',
-        primaryColor: '#0e3c6c',
-        secondaryColor: 'slate-50',
-    },
-    {
         title: 'Meditation',
         url: '/leaf-meditation.svg',
         href: '/meditation',
