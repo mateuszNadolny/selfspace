@@ -24,17 +24,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                     </div>
                 )}
             </div>
-            <div className="absolute z-10 top-[10px] right-[10px]">
-                {!user && (
-                    <Link
-                        href="/sign-in"
-                        className="text-slate-400 text-sm font-sans hover:text-slate-200"
-                    >
-                        Click here to sign in
-                    </Link>
-                )}
-                <UserButton />
-            </div>
             {children}
         </div>
     )
